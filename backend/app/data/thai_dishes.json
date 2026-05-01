@@ -16,7 +16,7 @@
       "comfort"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Khao%20soi%20kai.JPG",
-    "local_image_path": "public/images/thai_dishes/t_01-khao-soi-kai.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_01-khao-soi-kai.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -36,7 +36,7 @@
       "classic"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pad%20Thai.JPG",
-    "local_image_path": "public/images/thai_dishes/t_02-pad-thai-goong.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_02-pad-thai-goong.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -56,7 +56,7 @@
       "rich"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Boat%20noodles.jpg",
-    "local_image_path": "public/images/thai_dishes/t_03-kuay-teow-ruea-nuea.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_03-kuay-teow-ruea-nuea.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -76,7 +76,7 @@
       "comfort"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Khao%20man%20gai.jpg",
-    "local_image_path": "public/images/thai_dishes/t_04-khao-man-gai.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_04-khao-man-gai.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -96,7 +96,7 @@
       "street_food"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Sai%20mu%20ping.jpg",
-    "local_image_path": "public/images/thai_dishes/t_05-moo-ping-khao-niao.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_05-moo-ping-khao-niao.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -116,7 +116,7 @@
       "fresh"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Somtam%20from%20food%20kiosk.jpg",
-    "local_image_path": "public/images/thai_dishes/t_06-som-tam-thai.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_06-som-tam-thai.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -136,7 +136,7 @@
       "spicy"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20yum%20goong-01.jpg",
-    "local_image_path": "public/images/thai_dishes/t_07-tom-yum-goong.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_07-tom-yum-goong.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -156,7 +156,7 @@
       "mild"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pad%20See%20EW%21%21%21.jpg",
-    "local_image_path": "public/images/thai_dishes/t_08-pad-see-ew-moo.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_08-pad-see-ew-moo.jpg",
     "asset_status": "fallback_copy"
   },
   {
@@ -176,7 +176,7 @@
       "crispy"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried%20Oyster%20Omelette.jpg",
-    "local_image_path": "public/images/thai_dishes/t_09-hoy-tod.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_09-hoy-tod.jpg",
     "asset_status": "fallback_copy"
   },
   {
@@ -196,7 +196,7 @@
       "thai_chinese"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Khao%20mu%20daeng.jpg",
-    "local_image_path": "public/images/thai_dishes/t_10-khao-moo-daeng.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_10-khao-moo-daeng.jpg",
     "asset_status": "fallback_copy"
   },
   {
@@ -216,7 +216,7 @@
       "spicy"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Thai%20Green%20Curry%20with%20Rice.jpg",
-    "local_image_path": "public/images/thai_dishes/t_11-gaeng-keow-wan-gai.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_11-gaeng-keow-wan-gai.jpg",
     "asset_status": "fallback_copy"
   },
   {
@@ -236,7 +236,7 @@
       "mild"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuai-tiao%20khua%20kai%20%28noodles%20fried%20with%20chicken%29%2C%20Bangkok%2C%202018-11-14.jpg",
-    "local_image_path": "public/images/thai_dishes/t_12-kuay-teow-khua-gai.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_12-kuay-teow-khua-gai.jpg",
     "asset_status": "fallback_copy"
   },
   {
@@ -256,7 +256,7 @@
       "sharing"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_13-goong-pao-nam-jim-seafood.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_13-goong-pao-nam-jim-seafood.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -276,7 +276,7 @@
       "sticky_rice"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Mango%20sticky%20rice.jpg",
-    "local_image_path": "public/images/thai_dishes/t_14-khao-niao-mamuang.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_14-khao-niao-mamuang.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -296,7 +296,7 @@
       "market"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Coconut%20Ice%20Cream%2C%20Bangkok.jpg",
-    "local_image_path": "public/images/thai_dishes/t_15-i-tim-kati.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_15-i-tim-kati.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -316,7 +316,7 @@
       "spicy"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kraphao%20moo.jpg",
-    "local_image_path": "public/images/thai_dishes/t_16-pad-kraphao-moo-kai-dao.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_16-pad-kraphao-moo-kai-dao.jpg",
     "asset_status": "fallback_copy"
   },
   {
@@ -336,7 +336,7 @@
       "thai_chinese"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Yen%20tafo.jpg",
-    "local_image_path": "public/images/thai_dishes/t_17-yen-ta-fo.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_17-yen-ta-fo.jpg",
     "asset_status": "fallback_copy"
   },
   {
@@ -356,7 +356,7 @@
       "crispy"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_18-roti-cha-thai.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_18-roti-cha-thai.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -376,7 +376,7 @@
       "herbal"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_19-larb-moo.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_19-larb-moo.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -396,7 +396,7 @@
       "spicy"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_20-nam-tok-moo.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_20-nam-tok-moo.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -416,7 +416,7 @@
       "mild"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_21-gai-yang.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_21-gai-yang.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -436,7 +436,7 @@
       "street_food"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_22-gai-tod-hat-yai.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_22-gai-tod-hat-yai.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -456,7 +456,7 @@
       "comfort"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_23-massaman-nuea.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_23-massaman-nuea.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -476,7 +476,7 @@
       "spicy"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Thai%20Red%20Curry%20with%20Rice.jpg",
-    "local_image_path": "public/images/thai_dishes/t_24-panang-moo.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_24-panang-moo.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -496,7 +496,7 @@
       "spicy"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_25-gaeng-som-cha-om-goong.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_25-gaeng-som-cha-om-goong.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -516,7 +516,7 @@
       "herbal"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_26-tom-kha-gai.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_26-tom-kha-gai.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -536,7 +536,7 @@
       "comfort"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_27-khao-kha-moo.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_27-khao-kha-moo.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -556,7 +556,7 @@
       "mild"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_28-khao-pad-pu.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_28-khao-pad-pu.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -576,7 +576,7 @@
       "mild"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_29-khao-pad-sapparot.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_29-khao-pad-sapparot.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -596,7 +596,7 @@
       "fresh"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_30-pla-pao.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_30-pla-pao.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -616,7 +616,7 @@
       "fresh"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_31-miang-pla-too.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_31-miang-pla-too.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -636,7 +636,7 @@
       "spicy"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_32-yam-woon-sen-talay.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_32-yam-woon-sen-talay.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -656,7 +656,7 @@
       "savory"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_33-goong-ob-woon-sen.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_33-goong-ob-woon-sen.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -676,7 +676,7 @@
       "mild"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Khao%20mu%20daeng.jpg",
-    "local_image_path": "public/images/thai_dishes/t_34-bamee-moo-daeng.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_34-bamee-moo-daeng.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -696,7 +696,7 @@
       "mild"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pad%20See%20EW%21%21%21.jpg",
-    "local_image_path": "public/images/thai_dishes/t_35-rad-na-moo.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_35-rad-na-moo.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -716,7 +716,7 @@
       "sauce"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_36-suki-haeng-talay.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_36-suki-haeng-talay.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -736,7 +736,7 @@
       "herbal"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_37-khanom-jeen-nam-ya.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_37-khanom-jeen-nam-ya.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -756,7 +756,7 @@
       "herbal"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_38-sai-ua.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_38-sai-ua.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -776,7 +776,7 @@
       "vegetables"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_39-nam-prik-ong.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_39-nam-prik-ong.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -796,7 +796,7 @@
       "fresh"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_40-miang-kham.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_40-miang-kham.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -816,7 +816,7 @@
       "skewer"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1529563021893-cc83c992d75d?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_41-satay-moo.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_41-satay-moo.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -836,7 +836,7 @@
       "spicy"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_42-tod-mun-pla.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_42-tod-mun-pla.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -856,7 +856,7 @@
       "fresh"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_43-hoi-krang-luak.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_43-hoi-krang-luak.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -876,7 +876,7 @@
       "mild"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_44-khao-tom-pla.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_44-khao-tom-pla.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -896,7 +896,7 @@
       "breakfast"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_45-jok-moo-kai-yiew-ma.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_45-jok-moo-kai-yiew-ma.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -916,7 +916,7 @@
       "street_food"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_46-khanom-krok.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_46-khanom-krok.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -936,7 +936,7 @@
       "sweet"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_47-khanom-buang.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_47-khanom-buang.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -956,7 +956,7 @@
       "crunchy"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Coconut%20Ice%20Cream%2C%20Bangkok.jpg",
-    "local_image_path": "public/images/thai_dishes/t_48-tub-tim-krob.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_48-tub-tim-krob.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -976,7 +976,7 @@
       "cold"
     ],
     "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Coconut%20Ice%20Cream%2C%20Bangkok.jpg",
-    "local_image_path": "public/images/thai_dishes/t_49-lod-chong-nam-kati.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_49-lod-chong-nam-kati.jpg",
     "asset_status": "downloaded"
   },
   {
@@ -996,7 +996,7 @@
       "cold"
     ],
     "remote_image_url": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=1200&q=80",
-    "local_image_path": "public/images/thai_dishes/t_50-cha-yen.jpg",
+    "local_image_path": "backend/app/data/images/thai_dishes/t_50-cha-yen.jpg",
     "asset_status": "downloaded"
   }
 ]
