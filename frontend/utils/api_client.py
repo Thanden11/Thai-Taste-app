@@ -27,7 +27,7 @@ def fetch_next_card(
                 "seen_ids": seen_ids,
                 "dietary_restrictions": dietary_restrictions or [],
             },
-            timeout=30,
+            timeout=60,
         )
         if r.status_code == 404:
             return None

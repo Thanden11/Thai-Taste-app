@@ -124,11 +124,24 @@ def _cosine_scores(matrix: np.ndarray, query: np.ndarray) -> np.ndarray:
 
 
 def _fingerprint(liked_food_ids: list[str], global_foods: list[dict]) -> np.ndarray:
+    """Query-encoded fingerprint — used when comparing against Thai dish embeddings."""
     liked = [f for f in global_foods if f["id"] in liked_food_ids]
     liked_vectors = _model().encode(
         [f["sensory_string"] for f in liked], prompt_name="query"
     )
     return np.mean(liked_vectors, axis=0)
+
+
+def _fingerprint_cached(liked_food_ids: list[str]) -> np.ndarray:
+    """Fingerprint built from the cached global food matrix — NO model call.
+
+    Used by next_card so every swipe is a fast numpy operation instead of
+    a slow CPU inference call.
+    """
+    foods, matrix = _get_or_build_global_matrix()
+    id_to_idx = {f["id"]: i for i, f in enumerate(foods)}
+    indices = [id_to_idx[fid] for fid in liked_food_ids if fid in id_to_idx]
+    return np.mean(matrix[indices], axis=0)
 
 
 # ── Public API ────────────────────────────────────────────────────────────────
@@ -199,7 +212,8 @@ def next_card(
         return global_foods[random.choice(pool_indices)]
 
     # ── Phase 2: embedding-driven adaptive selection ─────────────────────────
-    fp = _fingerprint(liked_ids, global_foods)
+    # Use cached vectors — avoids a model call on every swipe.
+    fp = _fingerprint_cached(liked_ids)
     pool_matrix = global_matrix[pool_indices]
     scores = _cosine_scores(pool_matrix, fp)
     best = pool_indices[int(np.argmin(scores))]
