@@ -47,7 +47,7 @@ def _get_or_build_matrix() -> tuple[list[dict], np.ndarray]:
     return dishes, matrix
 
 
-def recommend(liked_food_ids: list[str]) -> tuple[dict, dict]:
+def recommend(liked_food_ids: list[str], top_n: int = 3) -> list[tuple[dict, dict]]:
     global_foods = _load_json("global_foods.json")
     liked = [f for f in global_foods if f["id"] in liked_food_ids]
 
@@ -59,10 +59,13 @@ def recommend(liked_food_ids: list[str]) -> tuple[dict, dict]:
 
     norms = np.linalg.norm(matrix, axis=1) * np.linalg.norm(fingerprint)
     similarities = matrix @ fingerprint / np.where(norms == 0, 1, norms)
-    best_idx = int(np.argmax(similarities))
-    dish = dishes[best_idx]
+    top_indices = np.argsort(similarities)[::-1][:top_n]
 
     vendors = _load_json("vendors.json")
-    vendor = next(v for v in vendors if v["dish_id"] == dish["dish_id"])
+    results = []
+    for idx in top_indices:
+        dish = dishes[int(idx)]
+        vendor = next(v for v in vendors if v["dish_id"] == dish["dish_id"])
+        results.append((dish, vendor))
 
-    return dish, vendor
+    return results

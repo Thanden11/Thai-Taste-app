@@ -21,11 +21,15 @@ class VendorOut(BaseModel):
     flashcard_phonetic: str
 
 
+class RecommendResult(BaseModel):
+    dish: DishOut
+    vendor: VendorOut
+    explanation: str
+
+
 class RecommendRequest(BaseModel):
     liked_food_ids: list[str]
 
 
 class RecommendResponse(BaseModel):
-    dish: DishOut
-    vendor: VendorOut
-    explanation: str
+    results: list[RecommendResult]

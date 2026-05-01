@@ -48,34 +48,37 @@ def test_recommend_mac_and_cheese_status(api):
 
 
 def test_recommend_mac_and_cheese_top_level_keys(mac_response):
-    assert {"dish", "vendor", "explanation"}.issubset(mac_response.keys())
+    assert "results" in mac_response
+    assert len(mac_response["results"]) == 3
 
 
 def test_recommend_mac_and_cheese_dish_schema(mac_response):
-    assert DISH_FIELDS.issubset(mac_response["dish"].keys())
+    for result in mac_response["results"]:
+        assert DISH_FIELDS.issubset(result["dish"].keys())
 
 
 def test_recommend_mac_and_cheese_vendor_schema(mac_response):
-    vendor = mac_response["vendor"]
-    assert VENDOR_FIELDS.issubset(vendor.keys())
-    assert vendor["vendor_id"].startswith("v_")
+    for result in mac_response["results"]:
+        vendor = result["vendor"]
+        assert VENDOR_FIELDS.issubset(vendor.keys())
+        assert vendor["vendor_id"].startswith("v_")
 
 
 def test_recommend_mac_and_cheese_semantic_correctness(mac_response):
-    """Creamy/buttery input → Thai dish should have a creamy/rich sensory profile."""
-    sensory = mac_response["dish"]["sensory_string"].lower()
+    """Creamy/buttery input → top Thai dish should have a creamy/rich sensory profile."""
+    sensory = mac_response["results"][0]["dish"]["sensory_string"].lower()
     creamy_signals = ["cream", "coconut", "rich", "butter", "savory", "smooth"]
     assert any(word in sensory for word in creamy_signals), (
         f"Expected a creamy/rich Thai dish for Mac and Cheese input, "
-        f"got: {mac_response['dish']['name']!r}\n"
-        f"sensory_string: {mac_response['dish']['sensory_string']}"
+        f"got: {mac_response['results'][0]['dish']['name']!r}\n"
+        f"sensory_string: {mac_response['results'][0]['dish']['sensory_string']}"
     )
 
 
 def test_recommend_mac_and_cheese_explanation_from_ollama(mac_response):
-    """Ollama must return a real explanation (not just empty)."""
-    explanation = mac_response["explanation"]
-    assert isinstance(explanation, str) and len(explanation) > 20
+    """All 3 results must have a real Ollama explanation."""
+    for result in mac_response["results"]:
+        assert isinstance(result["explanation"], str) and len(result["explanation"]) > 20
 
 
 # ── Journey 4: Recommend — Smoky/Savory Input ────────────────────────────────
@@ -86,32 +89,38 @@ def test_recommend_bbq_brisket_status(api):
 
 
 def test_recommend_different_input_different_dish(mac_response, bbq_response):
-    """Different flavour profiles should yield different Thai dish matches."""
-    assert mac_response["dish"]["dish_id"] != bbq_response["dish"]["dish_id"], (
+    """Different flavour profiles should yield different top Thai dish matches."""
+    mac_top = mac_response["results"][0]["dish"]["dish_id"]
+    bbq_top = bbq_response["results"][0]["dish"]["dish_id"]
+    assert mac_top != bbq_top, (
         "Mac and Cheese and BBQ Brisket have very different flavour profiles "
         "— the recommender should not return the same Thai dish for both"
     )
 
 
 def test_recommend_bbq_explanation_non_empty(bbq_response):
-    assert len(bbq_response["explanation"]) > 20
+    for result in bbq_response["results"]:
+        assert len(result["explanation"]) > 20
 
 
 # ── Journey 5: Multi-Food Input ───────────────────────────────────────────────
 
-def test_recommend_multi_food_returns_single_dish(api):
+def test_recommend_multi_food_returns_three_results(api):
     data = api.post("/recommend", json={"liked_food_ids": ["g_01", "g_02"]}).json()
-    assert isinstance(data["dish"], dict)
-    assert isinstance(data["vendor"], dict)
-    assert isinstance(data["explanation"], str)
+    assert "results" in data
+    assert len(data["results"]) == 3
+    for result in data["results"]:
+        assert isinstance(result["dish"], dict)
+        assert isinstance(result["vendor"], dict)
+        assert isinstance(result["explanation"], str)
 
 
 # ── Journey 6: MongoDB Cache Consistency ─────────────────────────────────────
 
 def test_recommend_cache_returns_same_dish(api, mac_response):
-    """Same input always returns the same dish — embedding cache is deterministic."""
+    """Same input always returns the same top dish — embedding cache is deterministic."""
     second = api.post("/recommend", json={"liked_food_ids": ["g_02"]}).json()
-    assert second["dish"]["dish_id"] == mac_response["dish"]["dish_id"]
+    assert second["results"][0]["dish"]["dish_id"] == mac_response["results"][0]["dish"]["dish_id"]
 
 
 # ── Journey 7: Error Cases ────────────────────────────────────────────────────
