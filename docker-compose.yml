@@ -1,0 +1,74 @@
+services:
+  backend:
+    build: ./backend
+    container_name: thai-taste-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=development
+      - LOG_LEVEL=INFO
+      - CORS_ORIGINS=http://localhost:8501
+      - MONGO_URL=mongodb://mongo:27017
+      - OLLAMA_URL=http://ollama:11434
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+    volumes:
+      - ./backend/app:/app/app
+    depends_on:
+      mongo:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+
+  frontend:
+    build: ./frontend
+    container_name: thai-taste-frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - BACKEND_URL=http://backend:8000
+      - APP_ENV=development
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongodb/mongodb-atlas-local:latest
+    container_name: thai-taste-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.runCommand({ping:1}).ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: thai-taste-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./models:/root/.ollama
+
+  ollama-init:
+    image: ollama/ollama:latest
+    container_name: thai-taste-ollama-init
+    depends_on:
+      - ollama
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        sleep 3
+        export OLLAMA_HOST=http://ollama:11434
+        echo "[ollama-init] pulling gemma4 (this may take a while on first run)..."
+        ollama pull gemma4
+        echo "[ollama-init] done."
+    restart: "no"
+
+volumes:
+  mongo_data:

@@ -47,3 +47,8 @@ htmlcov/
 *.sqlite
 .cache/
 models_cache/
+
+# Ollama-managed Gemma weights (bind-mounted from docker-compose).
+# Keep the folder + .gitkeep, ignore everything else inside.
+models/*
+!models/.gitkeep
