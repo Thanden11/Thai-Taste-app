@@ -6,23 +6,24 @@ Hackathon timeline: **< 14 hours**. Three parallel tracks. Each owner ticks boxe
 
 ## Track A — Data Engineering
 
-**Owner:** _________  
+**Owner:** Payachai  
 **Files:** [backend/app/data/](backend/app/data/)
 
-- [ ] Fill [global_foods.json](backend/app/data/global_foods.json) with **10–15** items
-  - Fields: `id`, `name`, `image_url`, `sensory_string`
+- [x] Fill [global_foods.json](backend/app/data/global_foods.json) with **20** items
+  - Fields: `id`, `name`, `image_url`, `image_source_url`, `sensory_string`, `remote_image_url`, `local_image_path`, `asset_status`
   - Dense sensory strings (flavor, texture, ingredient, cooking style)
   - **Do NOT** put country names in `sensory_string`
-- [ ] Fill [thai_dishes.json](backend/app/data/thai_dishes.json) with **15–20** items
-  - Fields: `dish_id`, `name`, `english_name`, `image_url`, `sensory_string`, `match_reason_keywords`
+- [x] Fill [thai_dishes.json](backend/app/data/thai_dishes.json) with **50** items
+  - Fields: `dish_id`, `name`, `thai_name`, `english_name`, `image_url`, `image_source_url`, `sensory_string`, `match_reason_keywords`, `spice_level`, `tags`, `remote_image_url`, `local_image_path`, `asset_status`
   - `match_reason_keywords` is the offline LLM fallback — keep it short (3 adjectives)
-- [ ] Fill [vendors.json](backend/app/data/vendors.json) with **15–20** items
+- [x] Fill [vendors.json](backend/app/data/vendors.json) with **50** items
   - Fields: `vendor_id`, `dish_id`, `vendor_name`, `distance`, `google_maps_url`, `flashcard_thai`, `flashcard_phonetic`
   - Every `dish_id` in vendors.json **must exist** in thai_dishes.json
-- [ ] Scope vendors to **one street** (e.g. Bantadthong Rd, Bangkok) for hyper-local feel
-- [ ] Sanity check: open all 3 JSON files in a linter — no trailing commas, valid UTF-8
+- [x] Scope vendors to demo areas: Banthat Thong, Song Wat, and Chatuchak
+- [x] Fix image mapping so `local_image_path` points to existing files under `backend/app/data/images/...`
+- [x] Sanity check: all 3 JSON files parse, every vendor maps to a real dish, and all local image paths resolve
 
-**Definition of done:** all three files validate as JSON and every vendor maps to a real dish.
+**Definition of done:** all three files validate as JSON, every vendor maps to a real dish, and every local image path points to an existing downloaded asset.
 
 ---
 
