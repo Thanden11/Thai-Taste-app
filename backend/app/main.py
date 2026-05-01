@@ -1,6 +1,7 @@
 """FastAPI entrypoint."""
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from app.api.routes import router
 from app.config import settings
@@ -15,3 +16,9 @@ app.add_middleware(
 )
 
 app.include_router(router)
+
+app.mount(
+    "/images",
+    StaticFiles(directory=f"{settings.data_dir}/images"),
+    name="images",
+)
