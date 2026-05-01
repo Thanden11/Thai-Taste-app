@@ -1,5 +1,7 @@
 """FastAPI entrypoint."""
+from contextlib import asynccontextmanager
 from pathlib import Path
+from threading import Thread
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -7,8 +9,18 @@ from fastapi.staticfiles import StaticFiles
 
 from app.api.routes import router
 from app.config import settings
+from app.services import recommender
 
-app = FastAPI(title="Thai Taste API")
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Start model warmup in a background thread so the server accepts requests
+    # immediately. The /ready endpoint returns 503 until warmup completes.
+    Thread(target=recommender.warmup, daemon=True, name="warmup").start()
+    yield
+
+
+app = FastAPI(title="Thai Taste API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,

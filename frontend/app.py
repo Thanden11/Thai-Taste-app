@@ -11,6 +11,7 @@ from components import (
     done_box_html,
 )
 from utils.api_client import (
+    check_ready,
     fetch_next_card,
     get_recommendation,
     dish_image_url,
@@ -54,6 +55,7 @@ def _reset_and_go(page: str) -> None:
     st.session_state.swipe_done = False
     st.session_state.results = []
     st.session_state.error = None
+    # Keep model_ready=True across rounds — model stays loaded
     st.rerun()
 
 
@@ -115,6 +117,21 @@ def _do_recommend() -> None:
 
 
 def render_swipe() -> None:
+    # ── Warmup gate ─────────────────────────────────────────────────────────
+    # Poll /ready until the embedding model finishes loading on the backend.
+    if not st.session_state.get("model_ready"):
+        with st.spinner("AI model is warming up — usually takes 30–60 s on first run…"):
+            try:
+                ready = check_ready()
+            except Exception:
+                ready = False
+        if not ready:
+            st.info("Still loading model weights. Refreshing in 5 seconds…")
+            import time; time.sleep(5)
+            st.rerun()
+            return
+        st.session_state.model_ready = True
+
     liked_count = len(st.session_state.liked_ids)
     seen_count = len(st.session_state.seen_ids)
 

@@ -24,6 +24,16 @@ async def health():
     return {"status": "ok"}
 
 
+@router.get("/ready")
+async def ready():
+    """Returns 200 when the embedding model is loaded and caches are built.
+    Returns 503 while warmup is still running.
+    """
+    if not recommender.is_ready():
+        raise HTTPException(status_code=503, detail="warming_up")
+    return {"status": "ready"}
+
+
 @router.get("/global-foods")
 async def global_foods():
     path = Path(settings.data_dir) / "global_foods.json"

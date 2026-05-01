@@ -6,13 +6,20 @@ import httpx
 BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000").rstrip("/")
 
 
+def check_ready() -> bool:
+    """Returns True if the backend model is warmed up and ready."""
+    with httpx.Client() as client:
+        r = client.get(f"{BACKEND_URL}/ready", timeout=5)
+        return r.status_code == 200
+
+
 def fetch_next_card(liked_ids: list[str], seen_ids: list[str]) -> dict | None:
     """Return the next adaptive card, or None when all 20 have been seen."""
     with httpx.Client() as client:
         r = client.post(
             f"{BACKEND_URL}/next-card",
             json={"liked_ids": liked_ids, "seen_ids": seen_ids},
-            timeout=60,
+            timeout=30,
         )
         if r.status_code == 404:
             return None
