@@ -42,11 +42,16 @@ export function dishImageUrl(path: string): string {
 export async function fetchNextCard(
   likedIds: string[],
   seenIds: string[],
+  dietaryRestrictions: string[] = [],
 ): Promise<GlobalFood | null> {
   const res = await fetch(`${BACKEND_URL}/next-card`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ liked_ids: likedIds, seen_ids: seenIds }),
+    body: JSON.stringify({
+      liked_ids: likedIds,
+      seen_ids: seenIds,
+      dietary_restrictions: dietaryRestrictions,
+    }),
   });
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(`next-card failed: ${res.status}`);
@@ -55,11 +60,15 @@ export async function fetchNextCard(
 
 export async function fetchRecommendation(
   likedFoodIds: string[],
+  dietaryRestrictions: string[] = [],
 ): Promise<RecommendResult[]> {
   const res = await fetch(`${BACKEND_URL}/recommend`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ liked_food_ids: likedFoodIds }),
+    body: JSON.stringify({
+      liked_food_ids: likedFoodIds,
+      dietary_restrictions: dietaryRestrictions,
+    }),
   });
   if (!res.ok) throw new Error(`recommend failed: ${res.status}`);
   const data = await res.json();

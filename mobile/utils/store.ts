@@ -8,18 +8,21 @@ interface Session {
   likedIds: string[];
   seenIds: string[];
   results: RecommendResult[];
+  dietaryRestrictions: string[];
 }
 
 const session: Session = {
   likedIds: [],
   seenIds: [],
   results: [],
+  dietaryRestrictions: [],
 };
 
 export const store = {
   getLikedIds: (): string[] => [...session.likedIds],
   getSeenIds: (): string[] => [...session.seenIds],
   getResults: (): RecommendResult[] => [...session.results],
+  getDietaryRestrictions: (): string[] => [...session.dietaryRestrictions],
 
   addLiked(id: string) {
     session.likedIds.push(id);
@@ -36,9 +39,14 @@ export const store = {
     session.results = results;
   },
 
+  setDietaryRestrictions(restrictions: string[]) {
+    session.dietaryRestrictions = restrictions;
+  },
+
   reset() {
     session.likedIds = [];
     session.seenIds = [];
     session.results = [];
+    // dietaryRestrictions persists across rounds — user keeps their preference
   },
 };

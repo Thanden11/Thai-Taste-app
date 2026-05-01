@@ -13,7 +13,7 @@ const STEPS = [
 export default function WelcomeScreen() {
   const handleStart = () => {
     store.reset();
-    router.push('/swipe');
+    router.push('/onboarding');
   };
 
   return (

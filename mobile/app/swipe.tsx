@@ -30,7 +30,7 @@ export default function SwipeScreen() {
   const loadNextCard = useCallback(async () => {
     setStatus('loading');
     try {
-      const next = await fetchNextCard(store.getLikedIds(), store.getSeenIds());
+      const next = await fetchNextCard(store.getLikedIds(), store.getSeenIds(), store.getDietaryRestrictions());
       if (!next) {
         setStatus('done');
       } else {
@@ -77,7 +77,7 @@ export default function SwipeScreen() {
   const handleSeeMatches = async () => {
     setStatus('matching');
     try {
-      const results = await fetchRecommendation(store.getLikedIds());
+      const results = await fetchRecommendation(store.getLikedIds(), store.getDietaryRestrictions());
       store.setResults(results);
       router.replace('/results');
     } catch (e) {

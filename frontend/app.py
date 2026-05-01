@@ -1,4 +1,6 @@
-"""Streamlit entrypoint: welcome → swipe (adaptive) → results (top-5)."""
+"""Streamlit entrypoint: welcome → onboarding → swipe (adaptive) → results (top-5)."""
+import time
+
 import streamlit as st
 
 from components import (
@@ -28,34 +30,69 @@ inject_css()
 
 MIN_LIKES = 3
 TOTAL_FOODS = 20
+COLD_START_THRESHOLD = 5   # must match backend
+
+# ── Dietary / country data ────────────────────────────────────────────────────
+
+# Muslim-majority countries → no_pork restriction applied automatically.
+_MUSLIM_MAJORITY: frozenset[str] = frozenset({
+    "Afghanistan", "Albania", "Algeria", "Azerbaijan", "Bahrain",
+    "Bangladesh", "Bosnia and Herzegovina", "Brunei", "Chad", "Comoros",
+    "Djibouti", "Egypt", "Gambia", "Guinea", "Indonesia", "Iran", "Iraq",
+    "Jordan", "Kazakhstan", "Kosovo", "Kuwait", "Kyrgyzstan", "Libya",
+    "Malaysia", "Maldives", "Mali", "Mauritania", "Morocco", "Niger",
+    "Nigeria", "Oman", "Pakistan", "Palestine", "Qatar", "Saudi Arabia",
+    "Senegal", "Sierra Leone", "Somalia", "Sudan", "Syria", "Tajikistan",
+    "Tunisia", "Turkey", "Turkmenistan", "United Arab Emirates",
+    "Uzbekistan", "Yemen",
+})
+
+_ALL_COUNTRIES: list[str] = sorted({
+    "Australia", "Brazil", "Cambodia", "Canada", "China", "France",
+    "Germany", "India", "Italy", "Japan", "Laos", "Mexico", "Myanmar",
+    "Nepal", "New Zealand", "Philippines", "Russia", "Singapore",
+    "South Korea", "Spain", "Sri Lanka", "Switzerland", "Taiwan",
+    "Thailand", "United Kingdom", "United States", "Vietnam",
+    *_MUSLIM_MAJORITY,
+})
+
+
+def _restrictions_for(country: str) -> list[str]:
+    r: list[str] = []
+    if country in _MUSLIM_MAJORITY:
+        r.append("no_pork")
+    return r
 
 
 # ── Session state ─────────────────────────────────────────────────────────────
 
 def _init() -> None:
     st.session_state.setdefault("page", "welcome")
+    st.session_state.setdefault("dietary_restrictions", [])
     st.session_state.setdefault("liked_ids", [])
     st.session_state.setdefault("seen_ids", [])
     st.session_state.setdefault("current_card", None)
     st.session_state.setdefault("swipe_done", False)
     st.session_state.setdefault("results", [])
     st.session_state.setdefault("error", None)
+    st.session_state.setdefault("model_ready", False)
 
 
 _init()
 
 
-# ── Navigation helpers ────────────────────────────────────────────────────────
+# ── Navigation ────────────────────────────────────────────────────────────────
 
 def _reset_and_go(page: str) -> None:
     st.session_state.page = page
+    st.session_state.dietary_restrictions = []
     st.session_state.liked_ids = []
     st.session_state.seen_ids = []
     st.session_state.current_card = None
     st.session_state.swipe_done = False
     st.session_state.results = []
     st.session_state.error = None
-    # Keep model_ready=True across rounds — model stays loaded
+    # model_ready stays True across rounds — model stays loaded
     st.rerun()
 
 
@@ -69,7 +106,6 @@ def render_welcome() -> None:
     )
 
     steps_col, img_col = st.columns([1, 1], gap="large")
-
     with steps_col:
         st.markdown(
             '<div class="step-box">🍔 &nbsp; Swipe right on global dishes you love</div>'
@@ -79,7 +115,8 @@ def render_welcome() -> None:
         )
         st.write("")
         if st.button("Start Exploring", type="primary"):
-            _reset_and_go("swipe")
+            st.session_state.page = "onboarding"
+            st.rerun()
 
     with img_col:
         st.image(
@@ -90,13 +127,74 @@ def render_welcome() -> None:
         )
 
 
+# ── Onboarding ────────────────────────────────────────────────────────────────
+
+def render_onboarding() -> None:
+    st.markdown(
+        '<div class="hero-title" style="font-size:2.2rem">One quick question</div>'
+        '<div class="hero-sub">So we can personalise your recommendations.</div>',
+        unsafe_allow_html=True,
+    )
+
+    st.write("")
+    left, _ = st.columns([2, 1])
+
+    with left:
+        country = st.selectbox(
+            "Where are you from?",
+            options=["Prefer not to say"] + _ALL_COUNTRIES,
+            index=0,
+        )
+
+    auto_restrictions = _restrictions_for(country)
+
+    # Show auto-detected badge
+    if "no_pork" in auto_restrictions:
+        st.markdown(
+            '<div class="step-box" style="border-left-color:#E63946;">'
+            '🚫 &nbsp;<strong>Pork-free</strong> — pork dishes will be excluded from your recommendations.'
+            '</div>',
+            unsafe_allow_html=True,
+        )
+
+    st.write("")
+    st.markdown("**Manual overrides** (optional)")
+
+    no_pork = st.checkbox(
+        "Exclude pork dishes",
+        value="no_pork" in auto_restrictions,
+        help="Includes dishes with pork, moo, pepperoni, bacon etc.",
+    )
+
+    # Build final restriction list
+    restrictions: list[str] = []
+    if no_pork:
+        restrictions.append("no_pork")
+
+    # Summary
+    if restrictions:
+        labels = {"no_pork": "No pork"}
+        badges = " · ".join(labels[r] for r in restrictions if r in labels)
+        st.caption(f"Active filters: {badges}")
+    else:
+        st.caption("No dietary filters applied.")
+
+    st.write("")
+    col_btn, _ = st.columns([1, 3])
+    with col_btn:
+        if st.button("Start Swiping  →", type="primary", use_container_width=True):
+            st.session_state.dietary_restrictions = restrictions
+            st.session_state.page = "swipe"
+            st.rerun()
+
+
 # ── Swipe ─────────────────────────────────────────────────────────────────────
 
 def _load_next_card() -> None:
-    """Fetch next adaptive card and store in session state."""
     card = fetch_next_card(
         st.session_state.liked_ids,
         st.session_state.seen_ids,
+        dietary_restrictions=st.session_state.dietary_restrictions,
     )
     if card is None:
         st.session_state.swipe_done = True
@@ -108,7 +206,10 @@ def _load_next_card() -> None:
 def _do_recommend() -> None:
     with st.spinner("Finding your Thai matches…"):
         try:
-            results = get_recommendation(st.session_state.liked_ids)
+            results = get_recommendation(
+                st.session_state.liked_ids,
+                dietary_restrictions=st.session_state.dietary_restrictions,
+            )
             st.session_state.results = results
             st.session_state.page = "results"
         except Exception as exc:
@@ -118,8 +219,7 @@ def _do_recommend() -> None:
 
 def render_swipe() -> None:
     # ── Warmup gate ─────────────────────────────────────────────────────────
-    # Poll /ready until the embedding model finishes loading on the backend.
-    if not st.session_state.get("model_ready"):
+    if not st.session_state.model_ready:
         with st.spinner("AI model is warming up — usually takes 30–60 s on first run…"):
             try:
                 ready = check_ready()
@@ -127,7 +227,7 @@ def render_swipe() -> None:
                 ready = False
         if not ready:
             st.info("Still loading model weights. Refreshing in 5 seconds…")
-            import time; time.sleep(5)
+            time.sleep(5)
             st.rerun()
             return
         st.session_state.model_ready = True
@@ -135,7 +235,7 @@ def render_swipe() -> None:
     liked_count = len(st.session_state.liked_ids)
     seen_count = len(st.session_state.seen_ids)
 
-    # ── Header row ──────────────────────────────────────────────────────────
+    # ── Header ───────────────────────────────────────────────────────────────
     left, mid, right = st.columns([1, 4, 1])
     with left:
         if st.button("← Back", key="swipe_back"):
@@ -153,10 +253,16 @@ def render_swipe() -> None:
                 unsafe_allow_html=True,
             )
 
-    # ── Progress bar ────────────────────────────────────────────────────────
+    # Dietary filter badge
+    if st.session_state.dietary_restrictions:
+        label = " · ".join(
+            {"no_pork": "🚫 No pork"}.get(r, r)
+            for r in st.session_state.dietary_restrictions
+        )
+        st.caption(f"Active filter: {label}")
+
     st.progress(min(seen_count / TOTAL_FOODS, 1.0))
 
-    # ── Status hint ─────────────────────────────────────────────────────────
     if liked_count < MIN_LIKES:
         remaining = MIN_LIKES - liked_count
         st.markdown(
@@ -223,7 +329,6 @@ def render_swipe() -> None:
                 st.session_state.current_card = None
                 st.rerun()
 
-        # "See Matches" CTA floats in after MIN_LIKES
         if liked_count >= MIN_LIKES:
             st.write("")
             if st.button(
@@ -244,7 +349,7 @@ def render_results() -> None:
         return
 
     st.markdown('<p class="section-eyebrow">Your Thai Matches</p>', unsafe_allow_html=True)
-    st.caption(f"Top {len(results)} dishes matched to your taste — swipe through the tabs")
+    st.caption(f"Top {len(results)} dishes matched to your taste — browse the tabs")
     st.write("")
 
     tab_labels = ["★ Best Match"] + [f"Match #{i + 1}" for i in range(1, len(results))]
@@ -302,6 +407,8 @@ page = st.session_state.page
 
 if page == "welcome":
     render_welcome()
+elif page == "onboarding":
+    render_onboarding()
 elif page == "swipe":
     render_swipe()
 elif page == "results":

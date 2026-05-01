@@ -1,6 +1,8 @@
 """Vector-based Thai dish recommender with MongoDB embedding cache."""
 import json
 import logging
+import random
+import re
 from functools import lru_cache
 from pathlib import Path
 
@@ -92,6 +94,28 @@ def is_ready() -> bool:
     return _warmed_up
 
 
+# ── Dietary filtering ─────────────────────────────────────────────────────────
+
+# Word-boundary regex for pork indicators.
+# Matches "pork", "moo" (Thai for pork), "pepperoni", "bacon" as whole words.
+_PORK_RE = re.compile(r"\b(pork|moo|pepperoni|bacon)\b", re.IGNORECASE)
+
+
+def _is_pork(item: dict) -> bool:
+    text = " ".join([
+        item.get("english_name", item.get("name", "")),
+        item.get("sensory_string", ""),
+        " ".join(item.get("tags", [])),
+    ])
+    return bool(_PORK_RE.search(text))
+
+
+def _apply_restrictions(items: list[dict], restrictions: list[str]) -> list[dict]:
+    if "no_pork" in restrictions:
+        items = [i for i in items if not _is_pork(i)]
+    return items
+
+
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def _cosine_scores(matrix: np.ndarray, query: np.ndarray) -> np.ndarray:
@@ -109,39 +133,74 @@ def _fingerprint(liked_food_ids: list[str], global_foods: list[dict]) -> np.ndar
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
-def recommend(liked_food_ids: list[str], top_k: int = 5) -> list[tuple[dict, dict]]:
-    """Return the top_k best-matching Thai (dish, vendor) pairs."""
+def recommend(
+    liked_food_ids: list[str],
+    top_k: int = 5,
+    dietary_restrictions: list[str] | None = None,
+) -> list[tuple[dict, dict]]:
+    """Return the top_k best-matching Thai (dish, vendor) pairs.
+
+    Dishes excluded by dietary_restrictions are removed before ranking so
+    results always comply with the user's dietary preferences.
+    """
     global_foods = _load_json("global_foods.json")
     fp = _fingerprint(liked_food_ids, global_foods)
 
-    dishes, matrix = _get_or_build_matrix()
+    all_dishes, all_matrix = _get_or_build_matrix()
+    restrictions = dietary_restrictions or []
+
+    # Keep only allowed dishes; fall back to all dishes if filter removes everything
+    allowed_idx = [i for i, d in enumerate(all_dishes) if _apply_restrictions([d], restrictions)]
+    if not allowed_idx:
+        allowed_idx = list(range(len(all_dishes)))
+
+    dishes_list = [all_dishes[i] for i in allowed_idx]
+    matrix = all_matrix[allowed_idx]
+
     scores = _cosine_scores(matrix, fp)
-    top_indices = np.argsort(scores)[::-1][:top_k]
+    top_positions = np.argsort(scores)[::-1][:top_k]
 
     vendor_map = {v["dish_id"]: v for v in _load_json("vendors.json")}
-    return [(dishes[i], vendor_map[dishes[i]["dish_id"]]) for i in top_indices]
+    return [(dishes_list[p], vendor_map[dishes_list[p]["dish_id"]]) for p in top_positions]
 
 
-def next_card(liked_ids: list[str], seen_ids: list[str]) -> dict | None:
-    """Return the most informative unseen global food card.
+# Minimum likes required before the embedding fingerprint is meaningful enough
+# to drive adaptive card selection.
+COLD_START_THRESHOLD = 5
 
-    With no likes yet, returns the first unseen card.
-    Once likes exist, returns the card most dissimilar to the current
-    flavour fingerprint — maximising information gain per swipe.
+
+def next_card(
+    liked_ids: list[str],
+    seen_ids: list[str],
+    dietary_restrictions: list[str] | None = None,
+) -> dict | None:
+    """Return the next global food card.
+
+    Pork (and other restricted) cards are excluded from the pool entirely so
+    users never see foods they can't eat.
+
+    Phase 1 — cold start (liked < COLD_START_THRESHOLD): random unseen card.
+    Phase 2 — adaptive: unseen card most dissimilar to the flavour fingerprint.
     """
     global_foods, global_matrix = _get_or_build_global_matrix()
+    restrictions = dietary_restrictions or []
     seen_set = set(seen_ids)
 
-    unseen_indices = [i for i, f in enumerate(global_foods) if f["id"] not in seen_set]
-    if not unseen_indices:
+    # Pool = unseen AND allowed by dietary restrictions
+    pool_indices = [
+        i for i, f in enumerate(global_foods)
+        if f["id"] not in seen_set and _apply_restrictions([f], restrictions)
+    ]
+    if not pool_indices:
         return None
 
-    if not liked_ids:
-        return global_foods[unseen_indices[0]]
+    # ── Phase 1: random cold-start ──────────────────────────────────────────
+    if len(liked_ids) < COLD_START_THRESHOLD:
+        return global_foods[random.choice(pool_indices)]
 
+    # ── Phase 2: embedding-driven adaptive selection ─────────────────────────
     fp = _fingerprint(liked_ids, global_foods)
-
-    unseen_matrix = global_matrix[unseen_indices]
-    scores = _cosine_scores(unseen_matrix, fp)
-    best = unseen_indices[int(np.argmin(scores))]
+    pool_matrix = global_matrix[pool_indices]
+    scores = _cosine_scores(pool_matrix, fp)
+    best = pool_indices[int(np.argmin(scores))]
     return global_foods[best]

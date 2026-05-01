@@ -23,6 +23,7 @@ class VendorOut(BaseModel):
 
 class RecommendRequest(BaseModel):
     liked_food_ids: list[str]
+    dietary_restrictions: list[str] = []
 
 
 class RecommendResult(BaseModel):
@@ -38,3 +39,4 @@ class RecommendResponse(BaseModel):
 class NextCardRequest(BaseModel):
     liked_ids: list[str]
     seen_ids: list[str]
+    dietary_restrictions: list[str] = []

@@ -45,7 +45,11 @@ async def recommend_dish(body: RecommendRequest):
     if not body.liked_food_ids:
         raise HTTPException(status_code=400, detail="liked_food_ids cannot be empty")
 
-    matches = recommender.recommend(body.liked_food_ids, top_k=5)
+    matches = recommender.recommend(
+        body.liked_food_ids,
+        top_k=5,
+        dietary_restrictions=body.dietary_restrictions,
+    )
 
     global_foods = json.loads((Path(settings.data_dir) / "global_foods.json").read_text())
     liked_names = [f["name"] for f in global_foods if f["id"] in body.liked_food_ids]
@@ -77,7 +81,11 @@ async def recommend_dish(body: RecommendRequest):
 
 @router.post("/next-card")
 async def next_card(body: NextCardRequest):
-    card = recommender.next_card(body.liked_ids, body.seen_ids)
+    card = recommender.next_card(
+        body.liked_ids,
+        body.seen_ids,
+        dietary_restrictions=body.dietary_restrictions,
+    )
     if card is None:
         raise HTTPException(status_code=404, detail="No more cards available")
     return card
