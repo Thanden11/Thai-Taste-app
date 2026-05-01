@@ -1,1 +1,202 @@
-[]
+[
+  {
+    "id": "g_01",
+    "name": "Texas BBQ Brisket",
+    "image_url": "/images/global_foods/g_01-texas-bbq-brisket.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/bbq-brisket",
+    "sensory_string": "Smoky, deeply savory, fatty beef, slow-roasted meat, black pepper heat, caramelized bark, rich umami, heavy comfort food.",
+    "remote_image_url": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/global_foods/g_01-texas-bbq-brisket.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_02",
+    "name": "Mac and Cheese",
+    "image_url": "/images/global_foods/g_02-mac-and-cheese.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Macaroni_and_cheese.jpg",
+    "sensory_string": "Creamy cheese sauce, soft pasta, buttery richness, mild salt, warm dairy, smooth texture, cozy and filling.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Macaroni%20and%20cheese.jpg",
+    "local_image_path": "public/images/global_foods/g_02-mac-and-cheese.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_03",
+    "name": "Pepperoni Pizza",
+    "image_url": "/images/global_foods/g_03-pepperoni-pizza.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Pepperoni_pizza.jpg",
+    "sensory_string": "Chewy bread, melted cheese, tomato tang, salty cured meat, roasted oil, oregano aroma, lightly spicy finish.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pepperoni%20pizza.jpg",
+    "local_image_path": "public/images/global_foods/g_03-pepperoni-pizza.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_04",
+    "name": "Cheeseburger",
+    "image_url": "/images/global_foods/g_04-cheeseburger.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Cheeseburger.jpg",
+    "sensory_string": "Juicy grilled beef, melted cheese, soft bun, pickle acidity, sweet ketchup, toasted edges, savory and fatty.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheeseburger.jpg",
+    "local_image_path": "public/images/global_foods/g_04-cheeseburger.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_05",
+    "name": "Fish and Chips",
+    "image_url": "/images/global_foods/g_05-fish-and-chips.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Fish_and_chips_blackpool.jpg",
+    "sensory_string": "Crispy fried batter, flaky white fish, salty potato, malt vinegar tang, oily crunch, clean seafood sweetness.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fish%20and%20chips%20blackpool.jpg",
+    "local_image_path": "public/images/global_foods/g_05-fish-and-chips.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_06",
+    "name": "Chicken Tikka Masala",
+    "image_url": "/images/global_foods/g_06-chicken-tikka-masala.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Chicken_Tikka_Masala.jpg",
+    "sensory_string": "Creamy tomato curry, charred chicken, warm spice, ginger aroma, garlic, mild chili, rich sauce over rice.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%20Tikka%20Masala.jpg",
+    "local_image_path": "public/images/global_foods/g_06-chicken-tikka-masala.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_07",
+    "name": "Sushi Platter",
+    "image_url": "/images/global_foods/g_07-sushi-platter.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Sushi_platter.jpg",
+    "sensory_string": "Clean seafood, vinegared rice, soy saltiness, wasabi heat, soft fish, seaweed aroma, delicate umami.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Sushi%20platter.jpg",
+    "local_image_path": "public/images/global_foods/g_07-sushi-platter.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_08",
+    "name": "Beef Ramen",
+    "image_url": "/images/global_foods/g_08-beef-ramen.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Shoyu_Ramen.jpg",
+    "sensory_string": "Hot broth, springy noodles, roasted meat, soy umami, garlic oil, soft egg, salty and comforting.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Shoyu%20Ramen.jpg",
+    "local_image_path": "public/images/global_foods/g_08-beef-ramen.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_09",
+    "name": "Chicken Tacos",
+    "image_url": "/images/global_foods/g_09-chicken-tacos.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Chicken_Tacos.jpg",
+    "sensory_string": "Grilled chicken, corn tortilla, lime acidity, cilantro freshness, salsa heat, juicy bite, smoky edges.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%20Tacos.jpg",
+    "local_image_path": "public/images/global_foods/g_09-chicken-tacos.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_10",
+    "name": "Caesar Salad",
+    "image_url": "/images/global_foods/g_10-caesar-salad.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:A_Caesar_salad.jpg",
+    "sensory_string": "Crisp lettuce, creamy dressing, parmesan salt, garlic, anchovy umami, crunchy croutons, bright lemon.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20Caesar%20salad.jpg",
+    "local_image_path": "public/images/global_foods/g_10-caesar-salad.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_11",
+    "name": "Lasagna",
+    "image_url": "/images/global_foods/g_11-lasagna.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Lasagna.jpg",
+    "sensory_string": "Layered pasta, tomato meat sauce, melted cheese, baked edges, oregano, rich dairy, hearty savory comfort.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Lasagna.jpg",
+    "local_image_path": "public/images/global_foods/g_11-lasagna.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_12",
+    "name": "Falafel Pita",
+    "image_url": "/images/global_foods/g_12-falafel-pita.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Falafel_in_a_pita.jpg",
+    "sensory_string": "Crispy chickpea fritter, herbs, sesame tahini, fresh cucumber, tomato, warm bread, nutty and tangy.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Falafel%20in%20a%20pita.jpg",
+    "local_image_path": "public/images/global_foods/g_12-falafel-pita.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_13",
+    "name": "Chocolate Brownie",
+    "image_url": "/images/global_foods/g_13-chocolate-brownie.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Chocolate_Brownie.jpg",
+    "sensory_string": "Dense chocolate, fudgy center, toasted sugar, butter, cocoa bitterness, chewy edge, sweet and rich.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chocolate%20Brownie.jpg",
+    "local_image_path": "public/images/global_foods/g_13-chocolate-brownie.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_14",
+    "name": "Croissant",
+    "image_url": "/images/global_foods/g_14-croissant.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Croissant-Petr_Kratochvil.jpg",
+    "sensory_string": "Flaky pastry, buttery aroma, crisp outer layers, soft interior, light sweetness, toasted wheat, delicate fat.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Croissant-Petr%20Kratochvil.jpg",
+    "local_image_path": "public/images/global_foods/g_14-croissant.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_15",
+    "name": "Buffalo Wings",
+    "image_url": "/images/global_foods/g_15-buffalo-wings.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Buffalo_Wings_(6676460575).jpg",
+    "sensory_string": "Crispy chicken skin, vinegar chili sauce, buttery glaze, tangy heat, salty meat, messy finger-food crunch.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Buffalo%20Wings%20%286676460575%29.jpg",
+    "local_image_path": "public/images/global_foods/g_15-buffalo-wings.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_16",
+    "name": "Greek Gyro",
+    "image_url": "/images/global_foods/g_16-greek-gyro.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/gyro",
+    "sensory_string": "Roasted shaved meat, warm pita, garlicky yogurt sauce, tomato freshness, onion bite, oregano, salty and tangy.",
+    "remote_image_url": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/global_foods/g_16-greek-gyro.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_17",
+    "name": "Korean Fried Chicken",
+    "image_url": "/images/global_foods/g_17-korean-fried-chicken.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/korean-fried-chicken",
+    "sensory_string": "Extra crispy chicken, sticky sweet-spicy glaze, garlic, sesame, soy saltiness, juicy meat, crunchy coating.",
+    "remote_image_url": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/global_foods/g_17-korean-fried-chicken.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_18",
+    "name": "Seafood Paella",
+    "image_url": "/images/global_foods/g_18-seafood-paella.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/paella",
+    "sensory_string": "Saffron rice, shrimp and mussel sweetness, roasted pepper, olive oil, seafood broth, lemon brightness, toasted rice edges.",
+    "remote_image_url": "https://images.unsplash.com/photo-1534080564583-6be75777b70a?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/global_foods/g_18-seafood-paella.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_19",
+    "name": "Banh Mi",
+    "image_url": "/images/global_foods/g_19-banh-mi.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/banh-mi",
+    "sensory_string": "Crisp baguette, savory pork, pickled carrot acidity, cilantro freshness, chili, mayo richness, crunchy and tangy.",
+    "remote_image_url": "https://images.unsplash.com/photo-1600454309261-3dc9b7597637?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/global_foods/g_19-banh-mi.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "id": "g_20",
+    "name": "Apple Pie",
+    "image_url": "/images/global_foods/g_20-apple-pie.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Apple_pie.jpg",
+    "sensory_string": "Buttery baked crust, warm apple sweetness, cinnamon spice, caramelized sugar, soft fruit, flaky pastry, cozy dessert.",
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Apple%20pie.jpg",
+    "local_image_path": "public/images/global_foods/g_20-apple-pie.jpg",
+    "asset_status": "downloaded"
+  }
+]

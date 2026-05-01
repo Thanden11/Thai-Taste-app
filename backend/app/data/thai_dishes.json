@@ -1,1 +1,1002 @@
-[]
+[
+  {
+    "dish_id": "t_01",
+    "name": "Khao Soi Kai",
+    "thai_name": "ข้าวซอยไก่",
+    "english_name": "Northern Curry Noodles",
+    "image_url": "/images/thai_dishes/t_01-khao-soi-kai.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Khao_soi_kai.JPG",
+    "sensory_string": "Creamy coconut curry, warm dried spice, tender chicken, soft egg noodles, crispy noodle topping, pickled tang, savory comfort.",
+    "match_reason_keywords": "Creamy, Savory, Comforting",
+    "spice_level": 2,
+    "tags": [
+      "noodles",
+      "curry",
+      "chicken",
+      "comfort"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Khao%20soi%20kai.JPG",
+    "local_image_path": "public/images/thai_dishes/t_01-khao-soi-kai.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_02",
+    "name": "Pad Thai Goong",
+    "thai_name": "ผัดไทยกุ้ง",
+    "english_name": "Stir-Fried Tamarind Noodles with Shrimp",
+    "image_url": "/images/thai_dishes/t_02-pad-thai-goong.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Pad_Thai.JPG",
+    "sensory_string": "Chewy rice noodles, tamarind sweet-sour glaze, roasted peanuts, shrimp sweetness, egg, bean sprout crunch, lime brightness.",
+    "match_reason_keywords": "Tangy, Nutty, Sweet-Savory",
+    "spice_level": 1,
+    "tags": [
+      "noodles",
+      "shrimp",
+      "sweet_sour",
+      "classic"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pad%20Thai.JPG",
+    "local_image_path": "public/images/thai_dishes/t_02-pad-thai-goong.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_03",
+    "name": "Kuay Teow Ruea Nuea",
+    "thai_name": "ก๋วยเตี๋ยวเรือเนื้อ",
+    "english_name": "Beef Boat Noodles",
+    "image_url": "/images/thai_dishes/t_03-kuay-teow-ruea-nuea.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Boat_noodles.jpg",
+    "sensory_string": "Dark beef broth, iron-rich depth, garlic, cinnamon-like spice, chewy noodles, tender meat, herbal aroma, intense umami.",
+    "match_reason_keywords": "Beefy, Umami, Spiced",
+    "spice_level": 2,
+    "tags": [
+      "noodles",
+      "beef",
+      "broth",
+      "rich"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Boat%20noodles.jpg",
+    "local_image_path": "public/images/thai_dishes/t_03-kuay-teow-ruea-nuea.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_04",
+    "name": "Khao Man Gai",
+    "thai_name": "ข้าวมันไก่",
+    "english_name": "Chicken Rice",
+    "image_url": "/images/thai_dishes/t_04-khao-man-gai.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Khao_man_gai.jpg",
+    "sensory_string": "Silky poached chicken, fragrant chicken-fat rice, ginger, garlic, soy bean sauce, cucumber freshness, clean savory comfort.",
+    "match_reason_keywords": "Gentle, Savory, Ginger",
+    "spice_level": 1,
+    "tags": [
+      "rice",
+      "chicken",
+      "mild",
+      "comfort"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Khao%20man%20gai.jpg",
+    "local_image_path": "public/images/thai_dishes/t_04-khao-man-gai.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_05",
+    "name": "Moo Ping Khao Niao",
+    "thai_name": "หมูปิ้งข้าวเหนียว",
+    "english_name": "Grilled Pork Skewers with Sticky Rice",
+    "image_url": "/images/thai_dishes/t_05-moo-ping-khao-niao.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Sai_mu_ping.jpg",
+    "sensory_string": "Charcoal smoke, sweet pork marinade, garlic, coconut milk softness, sticky rice chew, caramelized edges, salty-sweet fat.",
+    "match_reason_keywords": "Smoky, Sweet-Savory, Grilled",
+    "spice_level": 1,
+    "tags": [
+      "grilled",
+      "pork",
+      "sticky_rice",
+      "street_food"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Sai%20mu%20ping.jpg",
+    "local_image_path": "public/images/thai_dishes/t_05-moo-ping-khao-niao.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_06",
+    "name": "Som Tam Thai",
+    "thai_name": "ส้มตำไทย",
+    "english_name": "Green Papaya Salad",
+    "image_url": "/images/thai_dishes/t_06-som-tam-thai.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Somtam_from_food_kiosk.jpg",
+    "sensory_string": "Crunchy green papaya, lime acidity, palm sugar sweetness, fish sauce salt, roasted peanut, tomato juice, fresh chili heat.",
+    "match_reason_keywords": "Crunchy, Bright, Spicy-Sour",
+    "spice_level": 3,
+    "tags": [
+      "salad",
+      "spicy",
+      "sour",
+      "fresh"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Somtam%20from%20food%20kiosk.jpg",
+    "local_image_path": "public/images/thai_dishes/t_06-som-tam-thai.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_07",
+    "name": "Tom Yum Goong",
+    "thai_name": "ต้มยำกุ้ง",
+    "english_name": "Hot and Sour Shrimp Soup",
+    "image_url": "/images/thai_dishes/t_07-tom-yum-goong.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Tom_yum_goong-01.jpg",
+    "sensory_string": "Hot sour broth, lemongrass, kaffir lime, galangal, shrimp sweetness, chili oil, mushroom earthiness, sharp herbal aroma.",
+    "match_reason_keywords": "Sour, Herbal, Seafood",
+    "spice_level": 3,
+    "tags": [
+      "soup",
+      "shrimp",
+      "herbal",
+      "spicy"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20yum%20goong-01.jpg",
+    "local_image_path": "public/images/thai_dishes/t_07-tom-yum-goong.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_08",
+    "name": "Pad See Ew Moo",
+    "thai_name": "ผัดซีอิ๊วหมู",
+    "english_name": "Soy Sauce Fried Noodles with Pork",
+    "image_url": "/images/thai_dishes/t_08-pad-see-ew-moo.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Pad_See_EW!!!.jpg",
+    "sensory_string": "Wide rice noodles, wok char, dark soy sweetness, tender pork, egg, Chinese broccoli crunch, smoky savory sauce.",
+    "match_reason_keywords": "Wok-Charred, Sweet-Savory, Chewy",
+    "spice_level": 1,
+    "tags": [
+      "noodles",
+      "pork",
+      "wok",
+      "mild"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pad%20See%20EW%21%21%21.jpg",
+    "local_image_path": "public/images/thai_dishes/t_08-pad-see-ew-moo.jpg",
+    "asset_status": "fallback_copy"
+  },
+  {
+    "dish_id": "t_09",
+    "name": "Hoy Tod",
+    "thai_name": "หอยทอด",
+    "english_name": "Crispy Oyster Omelette",
+    "image_url": "/images/thai_dishes/t_09-hoy-tod.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Fried_Oyster_Omelette.jpg",
+    "sensory_string": "Crispy egg batter, briny oyster, bean sprout crunch, oily edges, chili sauce tang, seafood sweetness, salty comfort.",
+    "match_reason_keywords": "Crispy, Seafood, Eggy",
+    "spice_level": 1,
+    "tags": [
+      "seafood",
+      "fried",
+      "egg",
+      "crispy"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried%20Oyster%20Omelette.jpg",
+    "local_image_path": "public/images/thai_dishes/t_09-hoy-tod.jpg",
+    "asset_status": "fallback_copy"
+  },
+  {
+    "dish_id": "t_10",
+    "name": "Khao Moo Daeng",
+    "thai_name": "ข้าวหมูแดง",
+    "english_name": "BBQ Pork Rice",
+    "image_url": "/images/thai_dishes/t_10-khao-moo-daeng.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Khao_mu_daeng.jpg",
+    "sensory_string": "Sweet roasted pork, sticky red gravy, jasmine rice, boiled egg, cucumber, Chinese sausage aroma, savory-sweet sauce.",
+    "match_reason_keywords": "Roasted, Sweet-Savory, Pork",
+    "spice_level": 1,
+    "tags": [
+      "rice",
+      "pork",
+      "roasted",
+      "thai_chinese"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Khao%20mu%20daeng.jpg",
+    "local_image_path": "public/images/thai_dishes/t_10-khao-moo-daeng.jpg",
+    "asset_status": "fallback_copy"
+  },
+  {
+    "dish_id": "t_11",
+    "name": "Gaeng Keow Wan Gai",
+    "thai_name": "แกงเขียวหวานไก่",
+    "english_name": "Green Curry Chicken",
+    "image_url": "/images/thai_dishes/t_11-gaeng-keow-wan-gai.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Thai_Green_Curry_with_Rice.jpg",
+    "sensory_string": "Coconut milk, green chili paste, basil aroma, tender chicken, eggplant, sweet heat, creamy spice, jasmine rice.",
+    "match_reason_keywords": "Creamy, Basil, Spicy",
+    "spice_level": 3,
+    "tags": [
+      "curry",
+      "chicken",
+      "coconut",
+      "spicy"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Thai%20Green%20Curry%20with%20Rice.jpg",
+    "local_image_path": "public/images/thai_dishes/t_11-gaeng-keow-wan-gai.jpg",
+    "asset_status": "fallback_copy"
+  },
+  {
+    "dish_id": "t_12",
+    "name": "Kuay Teow Khua Gai",
+    "thai_name": "ก๋วยเตี๋ยวคั่วไก่",
+    "english_name": "Charred Chicken Fried Noodles",
+    "image_url": "/images/thai_dishes/t_12-kuay-teow-khua-gai.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Kuai-tiao_khua_kai_(noodles_fried_with_chicken),_Bangkok,_2018-11-14.jpg",
+    "sensory_string": "Smoky wok-charred noodles, tender chicken, egg coating, lettuce freshness, white pepper, light soy salt, crispy noodle edges.",
+    "match_reason_keywords": "Smoky, Eggy, Wok-Charred",
+    "spice_level": 1,
+    "tags": [
+      "noodles",
+      "chicken",
+      "wok",
+      "mild"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuai-tiao%20khua%20kai%20%28noodles%20fried%20with%20chicken%29%2C%20Bangkok%2C%202018-11-14.jpg",
+    "local_image_path": "public/images/thai_dishes/t_12-kuay-teow-khua-gai.jpg",
+    "asset_status": "fallback_copy"
+  },
+  {
+    "dish_id": "t_13",
+    "name": "Goong Pao Nam Jim Seafood",
+    "thai_name": "กุ้งเผาน้ำจิ้มซีฟู้ด",
+    "english_name": "Grilled Prawns with Seafood Sauce",
+    "image_url": "/images/thai_dishes/t_13-goong-pao-nam-jim-seafood.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/grilled-shrimp",
+    "sensory_string": "Charred prawn shell, sweet seafood meat, smoky grill, lime-chili sauce, garlic, cilantro root, salty fish sauce, juicy bite.",
+    "match_reason_keywords": "Grilled, Seafood, Lime-Chili",
+    "spice_level": 3,
+    "tags": [
+      "seafood",
+      "grilled",
+      "spicy_sauce",
+      "sharing"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_13-goong-pao-nam-jim-seafood.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_14",
+    "name": "Khao Niao Mamuang",
+    "thai_name": "ข้าวเหนียวมะม่วง",
+    "english_name": "Mango Sticky Rice",
+    "image_url": "/images/thai_dishes/t_14-khao-niao-mamuang.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Mango_sticky_rice.jpg",
+    "sensory_string": "Ripe mango sweetness, coconut cream, sticky rice chew, toasted mung bean crunch, floral fruit aroma, salty-sweet dessert.",
+    "match_reason_keywords": "Sweet, Coconut, Fruity",
+    "spice_level": 0,
+    "tags": [
+      "dessert",
+      "mango",
+      "coconut",
+      "sticky_rice"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Mango%20sticky%20rice.jpg",
+    "local_image_path": "public/images/thai_dishes/t_14-khao-niao-mamuang.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_15",
+    "name": "I Tim Kati",
+    "thai_name": "ไอติมกะทิ",
+    "english_name": "Coconut Ice Cream",
+    "image_url": "/images/thai_dishes/t_15-i-tim-kati.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Coconut_Ice_Cream,_Bangkok.jpg",
+    "sensory_string": "Cold coconut cream, roasted peanut, soft sweetness, corn and jelly toppings, light salt, creamy tropical dessert.",
+    "match_reason_keywords": "Cold, Coconut, Creamy",
+    "spice_level": 0,
+    "tags": [
+      "dessert",
+      "coconut",
+      "cold",
+      "market"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Coconut%20Ice%20Cream%2C%20Bangkok.jpg",
+    "local_image_path": "public/images/thai_dishes/t_15-i-tim-kati.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_16",
+    "name": "Pad Kraphao Moo Kai Dao",
+    "thai_name": "ผัดกะเพราหมูไข่ดาว",
+    "english_name": "Holy Basil Pork with Fried Egg",
+    "image_url": "/images/thai_dishes/t_16-pad-kraphao-moo-kai-dao.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Kraphao_moo.jpg",
+    "sensory_string": "Garlic chili heat, holy basil aroma, minced pork umami, fish sauce salt, crispy fried egg edge, jasmine rice, fast wok flavor.",
+    "match_reason_keywords": "Garlicky, Basil, Spicy-Savory",
+    "spice_level": 3,
+    "tags": [
+      "rice",
+      "pork",
+      "basil",
+      "spicy"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kraphao%20moo.jpg",
+    "local_image_path": "public/images/thai_dishes/t_16-pad-kraphao-moo-kai-dao.jpg",
+    "asset_status": "fallback_copy"
+  },
+  {
+    "dish_id": "t_17",
+    "name": "Yen Ta Fo",
+    "thai_name": "เย็นตาโฟ",
+    "english_name": "Pink Seafood Noodle Soup",
+    "image_url": "/images/thai_dishes/t_17-yen-ta-fo.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Yen_tafo.jpg",
+    "sensory_string": "Silky rice noodles, fermented red bean curd sauce, fish balls, tofu, squid, morning glory crunch, sweet-tangy broth.",
+    "match_reason_keywords": "Tangy, Seafood, Silky",
+    "spice_level": 2,
+    "tags": [
+      "noodles",
+      "seafood",
+      "broth",
+      "thai_chinese"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Yen%20tafo.jpg",
+    "local_image_path": "public/images/thai_dishes/t_17-yen-ta-fo.jpg",
+    "asset_status": "fallback_copy"
+  },
+  {
+    "dish_id": "t_18",
+    "name": "Roti Cha Thai",
+    "thai_name": "โรตีชาไทย",
+    "english_name": "Thai Tea Roti",
+    "image_url": "/images/thai_dishes/t_18-roti-cha-thai.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/roti-dessert",
+    "sensory_string": "Crispy pan-fried flatbread, condensed milk sweetness, buttery edges, Thai tea aroma, creamy drizzle, warm dessert crunch.",
+    "match_reason_keywords": "Crispy, Sweet, Buttery",
+    "spice_level": 0,
+    "tags": [
+      "dessert",
+      "roti",
+      "thai_tea",
+      "crispy"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_18-roti-cha-thai.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_19",
+    "name": "Larb Moo",
+    "thai_name": "ลาบหมู",
+    "english_name": "Spicy Minced Pork Salad",
+    "image_url": "/images/thai_dishes/t_19-larb-moo.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/thai-salad",
+    "sensory_string": "Minced pork, toasted rice powder, lime sharpness, fish sauce salt, mint freshness, chili heat, shallot crunch, herbal and bright.",
+    "match_reason_keywords": "Herbal, Spicy-Sour, Toasted",
+    "spice_level": 3,
+    "tags": [
+      "salad",
+      "pork",
+      "spicy",
+      "herbal"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_19-larb-moo.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_20",
+    "name": "Nam Tok Moo",
+    "thai_name": "น้ำตกหมู",
+    "english_name": "Grilled Pork Spicy Salad",
+    "image_url": "/images/thai_dishes/t_20-nam-tok-moo.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/grilled-pork",
+    "sensory_string": "Char-grilled pork, lime dressing, toasted rice aroma, mint, fish sauce, chili flakes, juicy meat, smoky spicy-sour bite.",
+    "match_reason_keywords": "Smoky, Spicy-Sour, Grilled",
+    "spice_level": 3,
+    "tags": [
+      "salad",
+      "pork",
+      "grilled",
+      "spicy"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_20-nam-tok-moo.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_21",
+    "name": "Gai Yang",
+    "thai_name": "ไก่ย่าง",
+    "english_name": "Thai Grilled Chicken",
+    "image_url": "/images/thai_dishes/t_21-gai-yang.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/grilled-chicken",
+    "sensory_string": "Charcoal chicken, turmeric, garlic, coriander root, salty skin, juicy meat, smoky edges, sweet chili dip.",
+    "match_reason_keywords": "Smoky, Juicy, Garlicky",
+    "spice_level": 1,
+    "tags": [
+      "grilled",
+      "chicken",
+      "smoky",
+      "mild"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_21-gai-yang.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_22",
+    "name": "Gai Tod Hat Yai",
+    "thai_name": "ไก่ทอดหาดใหญ่",
+    "english_name": "Hat Yai Fried Chicken",
+    "image_url": "/images/thai_dishes/t_22-gai-tod-hat-yai.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/fried-chicken",
+    "sensory_string": "Crispy fried chicken, garlic marinade, coriander root, fried shallots, salty skin, juicy meat, sticky rice chew.",
+    "match_reason_keywords": "Crispy, Garlicky, Savory",
+    "spice_level": 1,
+    "tags": [
+      "fried",
+      "chicken",
+      "crispy",
+      "street_food"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_22-gai-tod-hat-yai.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_23",
+    "name": "Massaman Nuea",
+    "thai_name": "มัสมั่นเนื้อ",
+    "english_name": "Massaman Beef Curry",
+    "image_url": "/images/thai_dishes/t_23-massaman-nuea.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/thai-curry",
+    "sensory_string": "Slow-cooked beef, coconut curry, potato, peanut richness, cinnamon, cardamom, mild chili warmth, sweet-savory sauce.",
+    "match_reason_keywords": "Rich, Nutty, Warm-Spiced",
+    "spice_level": 2,
+    "tags": [
+      "curry",
+      "beef",
+      "coconut",
+      "comfort"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_23-massaman-nuea.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_24",
+    "name": "Panang Moo",
+    "thai_name": "พะแนงหมู",
+    "english_name": "Panang Pork Curry",
+    "image_url": "/images/thai_dishes/t_24-panang-moo.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Thai_Red_Curry_with_Rice.jpg",
+    "sensory_string": "Thick coconut curry, pork slices, kaffir lime leaf, peanut undertone, red chili paste, sweet heat, creamy and aromatic.",
+    "match_reason_keywords": "Creamy, Aromatic, Sweet-Spicy",
+    "spice_level": 2,
+    "tags": [
+      "curry",
+      "pork",
+      "coconut",
+      "spicy"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Thai%20Red%20Curry%20with%20Rice.jpg",
+    "local_image_path": "public/images/thai_dishes/t_24-panang-moo.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_25",
+    "name": "Gaeng Som Cha-Om Goong",
+    "thai_name": "แกงส้มชะอมกุ้ง",
+    "english_name": "Sour Curry with Acacia Omelette and Shrimp",
+    "image_url": "/images/thai_dishes/t_25-gaeng-som-cha-om-goong.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/thai-soup",
+    "sensory_string": "Sour tamarind curry, shrimp sweetness, acacia omelette, chili paste, vegetable crunch, clean broth, sharp and savory.",
+    "match_reason_keywords": "Sour, Shrimp, Bright",
+    "spice_level": 3,
+    "tags": [
+      "soup",
+      "shrimp",
+      "sour",
+      "spicy"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_25-gaeng-som-cha-om-goong.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_26",
+    "name": "Tom Kha Gai",
+    "thai_name": "ต้มข่าไก่",
+    "english_name": "Coconut Galangal Chicken Soup",
+    "image_url": "/images/thai_dishes/t_26-tom-kha-gai.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/coconut-soup",
+    "sensory_string": "Coconut milk broth, galangal perfume, chicken, mushroom, lime, lemongrass, soft chili, creamy sour herbal warmth.",
+    "match_reason_keywords": "Creamy, Herbal, Gentle-Sour",
+    "spice_level": 2,
+    "tags": [
+      "soup",
+      "chicken",
+      "coconut",
+      "herbal"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_26-tom-kha-gai.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_27",
+    "name": "Khao Kha Moo",
+    "thai_name": "ข้าวขาหมู",
+    "english_name": "Braised Pork Leg Rice",
+    "image_url": "/images/thai_dishes/t_27-khao-kha-moo.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/braised-pork",
+    "sensory_string": "Slow-braised pork leg, soy cinnamon broth, soft collagen, pickled mustard greens, boiled egg, jasmine rice, sweet savory gravy.",
+    "match_reason_keywords": "Braised, Soft, Sweet-Savory",
+    "spice_level": 1,
+    "tags": [
+      "rice",
+      "pork",
+      "braised",
+      "comfort"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_27-khao-kha-moo.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_28",
+    "name": "Khao Pad Pu",
+    "thai_name": "ข้าวผัดปู",
+    "english_name": "Crab Fried Rice",
+    "image_url": "/images/thai_dishes/t_28-khao-pad-pu.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/fried-rice",
+    "sensory_string": "Wok-fried jasmine rice, sweet crab meat, egg, scallion, white pepper, lime, cucumber, clean seafood umami.",
+    "match_reason_keywords": "Crab, Wok-Fried, Clean",
+    "spice_level": 1,
+    "tags": [
+      "rice",
+      "crab",
+      "wok",
+      "mild"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_28-khao-pad-pu.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_29",
+    "name": "Khao Pad Sapparot",
+    "thai_name": "ข้าวผัดสับปะรด",
+    "english_name": "Pineapple Fried Rice",
+    "image_url": "/images/thai_dishes/t_29-khao-pad-sapparot.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/fried-rice",
+    "sensory_string": "Fried rice, pineapple sweetness, cashew crunch, raisin, curry powder aroma, shrimp, egg, sweet-savory tropical bite.",
+    "match_reason_keywords": "Sweet-Savory, Tropical, Nutty",
+    "spice_level": 1,
+    "tags": [
+      "rice",
+      "shrimp",
+      "pineapple",
+      "mild"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_29-khao-pad-sapparot.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_30",
+    "name": "Pla Pao",
+    "thai_name": "ปลาเผา",
+    "english_name": "Salt-Crusted Grilled Fish",
+    "image_url": "/images/thai_dishes/t_30-pla-pao.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/grilled-fish",
+    "sensory_string": "Salt-crusted grilled fish, smoky skin, moist white meat, lemongrass aroma, lime-chili seafood sauce, fresh herbs.",
+    "match_reason_keywords": "Grilled, Fresh, Lime-Chili",
+    "spice_level": 2,
+    "tags": [
+      "fish",
+      "grilled",
+      "seafood",
+      "fresh"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_30-pla-pao.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_31",
+    "name": "Miang Pla Too",
+    "thai_name": "เมี่ยงปลาทู",
+    "english_name": "Mackerel Herb Wraps",
+    "image_url": "/images/thai_dishes/t_31-miang-pla-too.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/herb-wrap",
+    "sensory_string": "Fried mackerel, rice noodles, lettuce wraps, herbs, garlic, chili, lime sauce, salty fish and fresh green crunch.",
+    "match_reason_keywords": "Herbal, Fish, Fresh",
+    "spice_level": 2,
+    "tags": [
+      "fish",
+      "herbs",
+      "wrap",
+      "fresh"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_31-miang-pla-too.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_32",
+    "name": "Yam Woon Sen Talay",
+    "thai_name": "ยำวุ้นเส้นทะเล",
+    "english_name": "Glass Noodle Seafood Salad",
+    "image_url": "/images/thai_dishes/t_32-yam-woon-sen-talay.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/noodle-salad",
+    "sensory_string": "Glass noodles, shrimp, squid, lime dressing, celery, onion, tomato, chili, fish sauce, springy and spicy-sour.",
+    "match_reason_keywords": "Seafood, Spicy-Sour, Springy",
+    "spice_level": 3,
+    "tags": [
+      "salad",
+      "seafood",
+      "noodles",
+      "spicy"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_32-yam-woon-sen-talay.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_33",
+    "name": "Goong Ob Woon Sen",
+    "thai_name": "กุ้งอบวุ้นเส้น",
+    "english_name": "Claypot Prawns with Glass Noodles",
+    "image_url": "/images/thai_dishes/t_33-goong-ob-woon-sen.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/shrimp-noodles",
+    "sensory_string": "Glass noodles soaked in prawn juices, ginger, celery, soy, black pepper, pork fat aroma, claypot steam, seafood umami.",
+    "match_reason_keywords": "Prawn, Ginger, Umami",
+    "spice_level": 1,
+    "tags": [
+      "seafood",
+      "noodles",
+      "claypot",
+      "savory"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_33-goong-ob-woon-sen.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_34",
+    "name": "Bamee Moo Daeng",
+    "thai_name": "บะหมี่หมูแดง",
+    "english_name": "Egg Noodles with BBQ Pork",
+    "image_url": "/images/thai_dishes/t_34-bamee-moo-daeng.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Khao_mu_daeng.jpg",
+    "sensory_string": "Springy egg noodles, sweet BBQ pork, garlic oil, scallion, wonton aroma, light broth, roasted pork sweetness.",
+    "match_reason_keywords": "Springy, Roasted Pork, Garlicky",
+    "spice_level": 1,
+    "tags": [
+      "noodles",
+      "pork",
+      "thai_chinese",
+      "mild"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Khao%20mu%20daeng.jpg",
+    "local_image_path": "public/images/thai_dishes/t_34-bamee-moo-daeng.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_35",
+    "name": "Rad Na Moo",
+    "thai_name": "ราดหน้าหมู",
+    "english_name": "Rice Noodles in Gravy with Pork",
+    "image_url": "/images/thai_dishes/t_35-rad-na-moo.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Pad_See_EW!!!.jpg",
+    "sensory_string": "Wide rice noodles, smoky wok aroma, silky pork gravy, Chinese broccoli, white pepper, mellow soy, soft and comforting.",
+    "match_reason_keywords": "Silky, Wok-Charred, Mild",
+    "spice_level": 1,
+    "tags": [
+      "noodles",
+      "pork",
+      "gravy",
+      "mild"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pad%20See%20EW%21%21%21.jpg",
+    "local_image_path": "public/images/thai_dishes/t_35-rad-na-moo.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_36",
+    "name": "Suki Haeng Talay",
+    "thai_name": "สุกี้แห้งทะเล",
+    "english_name": "Dry Thai Suki with Seafood",
+    "image_url": "/images/thai_dishes/t_36-suki-haeng-talay.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/stir-fried-noodles",
+    "sensory_string": "Glass noodles, egg, seafood, napa cabbage, celery, fermented bean curd suki sauce, sesame, chili, tangy savory wok flavor.",
+    "match_reason_keywords": "Tangy, Seafood, Wok-Fried",
+    "spice_level": 2,
+    "tags": [
+      "noodles",
+      "seafood",
+      "wok",
+      "sauce"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_36-suki-haeng-talay.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_37",
+    "name": "Khanom Jeen Nam Ya",
+    "thai_name": "ขนมจีนน้ำยา",
+    "english_name": "Rice Noodles with Fish Curry",
+    "image_url": "/images/thai_dishes/t_37-khanom-jeen-nam-ya.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/thai-curry-noodles",
+    "sensory_string": "Soft fermented rice noodles, fish curry, coconut, lemongrass, fingerroot aroma, fresh vegetables, chili warmth.",
+    "match_reason_keywords": "Coconut, Fish, Herbal",
+    "spice_level": 2,
+    "tags": [
+      "noodles",
+      "fish",
+      "curry",
+      "herbal"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_37-khanom-jeen-nam-ya.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_38",
+    "name": "Sai Ua",
+    "thai_name": "ไส้อั่ว",
+    "english_name": "Northern Thai Herb Sausage",
+    "image_url": "/images/thai_dishes/t_38-sai-ua.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/sausage",
+    "sensory_string": "Grilled pork sausage, lemongrass, kaffir lime leaf, galangal, chili paste, fatty snap, smoky herbal spice.",
+    "match_reason_keywords": "Smoky, Herbal, Spiced Pork",
+    "spice_level": 2,
+    "tags": [
+      "pork",
+      "grilled",
+      "northern",
+      "herbal"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_38-sai-ua.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_39",
+    "name": "Nam Prik Ong",
+    "thai_name": "น้ำพริกอ่อง",
+    "english_name": "Northern Tomato Pork Chili Dip",
+    "image_url": "/images/thai_dishes/t_39-nam-prik-ong.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/chili-dip",
+    "sensory_string": "Tomato pork chili dip, garlic, shallot, mild chili, fresh vegetables, pork richness, sweet-sour savory balance.",
+    "match_reason_keywords": "Tomato, Pork, Mild-Spicy",
+    "spice_level": 2,
+    "tags": [
+      "dip",
+      "pork",
+      "northern",
+      "vegetables"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_39-nam-prik-ong.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_40",
+    "name": "Miang Kham",
+    "thai_name": "เมี่ยงคำ",
+    "english_name": "Betel Leaf Flavor Bites",
+    "image_url": "/images/thai_dishes/t_40-miang-kham.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/thai-herbs",
+    "sensory_string": "Betel leaf, toasted coconut, peanut, lime peel, ginger, shallot, chili, palm syrup, tiny sweet-salty herbal explosion.",
+    "match_reason_keywords": "Herbal, Nutty, Sweet-Salty",
+    "spice_level": 1,
+    "tags": [
+      "snack",
+      "herbs",
+      "nutty",
+      "fresh"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_40-miang-kham.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_41",
+    "name": "Satay Moo",
+    "thai_name": "สะเต๊ะหมู",
+    "english_name": "Pork Satay",
+    "image_url": "/images/thai_dishes/t_41-satay-moo.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/satay",
+    "sensory_string": "Grilled pork skewers, turmeric, coconut milk marinade, peanut sauce, cucumber relish, smoky sweet-savory richness.",
+    "match_reason_keywords": "Peanut, Grilled, Sweet-Savory",
+    "spice_level": 1,
+    "tags": [
+      "grilled",
+      "pork",
+      "peanut",
+      "skewer"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1529563021893-cc83c992d75d?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_41-satay-moo.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_42",
+    "name": "Tod Mun Pla",
+    "thai_name": "ทอดมันปลา",
+    "english_name": "Thai Fish Cakes",
+    "image_url": "/images/thai_dishes/t_42-tod-mun-pla.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/fish-cake",
+    "sensory_string": "Bouncy fish cake, red curry paste, kaffir lime leaf, green bean snap, fried edges, cucumber relish, spicy aromatic chew.",
+    "match_reason_keywords": "Bouncy, Curry-Spiced, Fried",
+    "spice_level": 2,
+    "tags": [
+      "fish",
+      "fried",
+      "snack",
+      "spicy"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_42-tod-mun-pla.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_43",
+    "name": "Hoi Krang Luak",
+    "thai_name": "หอยแครงลวก",
+    "english_name": "Blanched Cockles with Seafood Sauce",
+    "image_url": "/images/thai_dishes/t_43-hoi-krang-luak.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/shellfish",
+    "sensory_string": "Briny cockles, soft chew, mineral seafood sweetness, garlic-lime chili sauce, cilantro, sharp spicy freshness.",
+    "match_reason_keywords": "Briny, Seafood, Lime-Chili",
+    "spice_level": 3,
+    "tags": [
+      "seafood",
+      "shellfish",
+      "spicy",
+      "fresh"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_43-hoi-krang-luak.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_44",
+    "name": "Khao Tom Pla",
+    "thai_name": "ข้าวต้มปลา",
+    "english_name": "Fish Rice Soup",
+    "image_url": "/images/thai_dishes/t_44-khao-tom-pla.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/rice-soup",
+    "sensory_string": "Hot rice soup, clean fish slices, ginger, celery, garlic oil, white pepper, light broth, gentle seafood comfort.",
+    "match_reason_keywords": "Gentle, Ginger, Seafood",
+    "spice_level": 0,
+    "tags": [
+      "soup",
+      "fish",
+      "rice",
+      "mild"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_44-khao-tom-pla.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_45",
+    "name": "Jok Moo Kai Yiew Ma",
+    "thai_name": "โจ๊กหมูไข่เยี่ยวม้า",
+    "english_name": "Pork Congee with Century Egg",
+    "image_url": "/images/thai_dishes/t_45-jok-moo-kai-yiew-ma.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/congee",
+    "sensory_string": "Silky rice porridge, pork meatballs, century egg richness, ginger, scallion, white pepper, warm and soft comfort.",
+    "match_reason_keywords": "Silky, Comforting, Peppery",
+    "spice_level": 0,
+    "tags": [
+      "rice",
+      "soup",
+      "pork",
+      "breakfast"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_45-jok-moo-kai-yiew-ma.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_46",
+    "name": "Khanom Krok",
+    "thai_name": "ขนมครก",
+    "english_name": "Coconut Rice Pancakes",
+    "image_url": "/images/thai_dishes/t_46-khanom-krok.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/coconut-pancake",
+    "sensory_string": "Crisp rice pancake shell, soft coconut custard center, scallion or corn topping, salty-sweet bite, warm street dessert.",
+    "match_reason_keywords": "Coconut, Crispy-Soft, Sweet-Salty",
+    "spice_level": 0,
+    "tags": [
+      "dessert",
+      "coconut",
+      "pancake",
+      "street_food"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_46-khanom-krok.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_47",
+    "name": "Khanom Buang",
+    "thai_name": "ขนมเบื้อง",
+    "english_name": "Thai Crispy Crepes",
+    "image_url": "/images/thai_dishes/t_47-khanom-buang.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/crepe",
+    "sensory_string": "Thin crispy crepe, sweet meringue cream, golden egg floss, coconut, delicate crunch, sweet street snack.",
+    "match_reason_keywords": "Crispy, Sweet, Delicate",
+    "spice_level": 0,
+    "tags": [
+      "dessert",
+      "crepe",
+      "crispy",
+      "sweet"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_47-khanom-buang.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_48",
+    "name": "Tub Tim Krob",
+    "thai_name": "ทับทิมกรอบ",
+    "english_name": "Water Chestnut Rubies in Coconut Milk",
+    "image_url": "/images/thai_dishes/t_48-tub-tim-krob.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Coconut_Ice_Cream,_Bangkok.jpg",
+    "sensory_string": "Cold coconut milk, crunchy water chestnut rubies, syrup sweetness, shaved ice, soft jackfruit aroma, refreshing creamy dessert.",
+    "match_reason_keywords": "Cold, Coconut, Crunchy",
+    "spice_level": 0,
+    "tags": [
+      "dessert",
+      "coconut",
+      "cold",
+      "crunchy"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Coconut%20Ice%20Cream%2C%20Bangkok.jpg",
+    "local_image_path": "public/images/thai_dishes/t_48-tub-tim-krob.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_49",
+    "name": "Lod Chong Nam Kati",
+    "thai_name": "ลอดช่องน้ำกะทิ",
+    "english_name": "Pandan Noodles in Coconut Milk",
+    "image_url": "/images/thai_dishes/t_49-lod-chong-nam-kati.jpg",
+    "image_source_url": "https://commons.wikimedia.org/wiki/File:Coconut_Ice_Cream,_Bangkok.jpg",
+    "sensory_string": "Pandan jelly noodles, coconut milk, palm sugar syrup, shaved ice, floral aroma, creamy cold sweetness.",
+    "match_reason_keywords": "Pandan, Coconut, Cold-Sweet",
+    "spice_level": 0,
+    "tags": [
+      "dessert",
+      "pandan",
+      "coconut",
+      "cold"
+    ],
+    "remote_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Coconut%20Ice%20Cream%2C%20Bangkok.jpg",
+    "local_image_path": "public/images/thai_dishes/t_49-lod-chong-nam-kati.jpg",
+    "asset_status": "downloaded"
+  },
+  {
+    "dish_id": "t_50",
+    "name": "Cha Yen",
+    "thai_name": "ชาเย็น",
+    "english_name": "Thai Iced Tea",
+    "image_url": "/images/thai_dishes/t_50-cha-yen.jpg",
+    "image_source_url": "https://unsplash.com/s/photos/thai-iced-tea",
+    "sensory_string": "Strong black tea, condensed milk, evaporated milk, caramel sweetness, ice, creamy tannic finish, orange tea aroma.",
+    "match_reason_keywords": "Creamy, Sweet, Tea",
+    "spice_level": 0,
+    "tags": [
+      "drink",
+      "tea",
+      "sweet",
+      "cold"
+    ],
+    "remote_image_url": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=1200&q=80",
+    "local_image_path": "public/images/thai_dishes/t_50-cha-yen.jpg",
+    "asset_status": "downloaded"
+  }
+]
