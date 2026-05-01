@@ -1,4 +1,6 @@
 """FastAPI entrypoint."""
+from pathlib import Path
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -17,8 +19,6 @@ app.add_middleware(
 
 app.include_router(router)
 
-app.mount(
-    "/images",
-    StaticFiles(directory=f"{settings.data_dir}/images"),
-    name="images",
-)
+_images_dir = f"{settings.data_dir}/images"
+if Path(_images_dir).is_dir():
+    app.mount("/images", StaticFiles(directory=_images_dir), name="images")

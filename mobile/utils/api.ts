@@ -1,5 +1,6 @@
-const BACKEND_URL =
-  process.env.EXPO_PUBLIC_BACKEND_URL ?? 'http://localhost:8000';
+const BACKEND_URL = (
+  process.env.EXPO_PUBLIC_BACKEND_URL ?? 'http://localhost:8000'
+).replace(/\/$/, '');
 
 export type GlobalFood = {
   id: string;

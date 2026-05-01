@@ -3,7 +3,7 @@ import os
 
 import httpx
 
-BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
+BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000").rstrip("/")
 
 
 def fetch_next_card(liked_ids: list[str], seen_ids: list[str]) -> dict | None:
