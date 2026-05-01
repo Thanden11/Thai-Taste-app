@@ -7,6 +7,7 @@ class DishOut(BaseModel):
     name: str
     thai_name: str
     english_name: str
+    description: str
     image_url: str
     sensory_string: str
 

@@ -1,6 +1,14 @@
 """E2E journey tests against the live backend (requires docker compose up)."""
 
-DISH_FIELDS = {"dish_id", "name", "thai_name", "english_name", "image_url", "sensory_string"}
+DISH_FIELDS = {
+    "dish_id",
+    "name",
+    "thai_name",
+    "english_name",
+    "description",
+    "image_url",
+    "sensory_string",
+}
 VENDOR_FIELDS = {"vendor_id", "vendor_name", "distance", "google_maps_url", "flashcard_thai", "flashcard_phonetic"}
 
 # ── Journey 1: Health Check ───────────────────────────────────────────────────
