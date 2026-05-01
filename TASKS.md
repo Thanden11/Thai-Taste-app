@@ -1,0 +1,115 @@
+# Task Board — Thai Taste-App
+
+Hackathon timeline: **< 14 hours**. Three parallel tracks. Each owner ticks boxes as they go.
+
+---
+
+## Track A — Data Engineering
+
+**Owner:** _________  
+**Files:** [backend/app/data/](backend/app/data/)
+
+- [ ] Fill [global_foods.json](backend/app/data/global_foods.json) with **10–15** items
+  - Fields: `id`, `name`, `image_url`, `sensory_string`
+  - Dense sensory strings (flavor, texture, ingredient, cooking style)
+  - **Do NOT** put country names in `sensory_string`
+- [ ] Fill [thai_dishes.json](backend/app/data/thai_dishes.json) with **15–20** items
+  - Fields: `dish_id`, `name`, `english_name`, `image_url`, `sensory_string`, `match_reason_keywords`
+  - `match_reason_keywords` is the offline LLM fallback — keep it short (3 adjectives)
+- [ ] Fill [vendors.json](backend/app/data/vendors.json) with **15–20** items
+  - Fields: `vendor_id`, `dish_id`, `vendor_name`, `distance`, `google_maps_url`, `flashcard_thai`, `flashcard_phonetic`
+  - Every `dish_id` in vendors.json **must exist** in thai_dishes.json
+- [ ] Scope vendors to **one street** (e.g. Bantadthong Rd, Bangkok) for hyper-local feel
+- [ ] Sanity check: open all 3 JSON files in a linter — no trailing commas, valid UTF-8
+
+**Definition of done:** all three files validate as JSON and every vendor maps to a real dish.
+
+---
+
+## Track B — ML & Generative Explanation (Backend)
+
+**Owner:** _________  
+**Files:** [backend/app/services/](backend/app/services/), [backend/app/api/](backend/app/api/), [backend/app/config.py](backend/app/config.py), [backend/app/main.py](backend/app/main.py)
+
+- [ ] [config.py](backend/app/config.py) — load `GEMINI_API_KEY`, `DATA_DIR`, `CORS_ORIGINS` via `pydantic-settings`
+- [ ] [services/recommender.py](backend/app/services/recommender.py)
+  - [ ] Load `SentenceTransformer('all-MiniLM-L6-v2')` once (module-level / lru_cache)
+  - [ ] Pre-compute Thai dish embedding matrix on startup
+  - [ ] `def recommend(liked_food_ids: list[str]) -> tuple[dish, vendor]`
+    - Embed liked global foods → average → user fingerprint
+    - Cosine similarity vs Thai matrix → argmax
+    - Look up vendor by `dish_id`
+- [ ] [services/llm.py](backend/app/services/llm.py)
+  - [ ] `def get_match_explanation(liked_names, dish_name, fallback_keywords) -> str`
+  - [ ] Wrap Gemini call in `try/except` → return fallback string on any failure
+  - [ ] Use prompt from README ("We matched you with this because...")
+- [ ] [models/schemas.py](backend/app/models/schemas.py) — Pydantic request/response models
+  - `RecommendRequest { liked_food_ids: list[str] }`
+  - `RecommendResponse { dish, vendor, explanation }`
+- [ ] [api/routes.py](backend/app/api/routes.py)
+  - [ ] `GET /health`
+  - [ ] `GET /global-foods` — returns the swipe deck for the frontend
+  - [ ] `POST /recommend` — runs recommender + LLM, returns full result
+- [ ] [main.py](backend/app/main.py) — FastAPI app, CORS middleware, mount routes
+- [ ] Smoke test: `uv run uvicorn app.main:app --reload` then `curl localhost:8000/health`
+
+**Definition of done:** `POST /recommend` returns a valid result with both Gemini and offline-fallback paths verified.
+
+---
+
+## Track C — Streamlit Frontend
+
+**Owner:** _________  
+**Files:** [frontend/](frontend/)
+
+- [ ] [utils/api_client.py](frontend/utils/api_client.py) — thin `httpx` wrapper around `BACKEND_URL`
+  - `get_global_foods()`, `post_recommend(liked_ids)`
+- [ ] [app.py](frontend/app.py) — main entrypoint, owns session state
+  - Session keys: `current_swipe_index`, `liked_foods`, `app_stage`, `result`
+- [ ] **Screen 1 — Welcome** (`app_stage == "welcome"`)
+  - Title, short pitch, "Start" button → flips stage to `swiping`
+- [ ] **Screen 2 — Swiping** (`app_stage == "swiping"`)
+  - Show food image + name from current index
+  - Two big buttons: ❌ Nah / ❤️ Love it
+  - On Love: append to `liked_foods`. Always: increment index
+  - After 5 swipes → flip to `matching`
+- [ ] **Screen 3 — Matching** (`app_stage == "matching"`)
+  - `st.spinner("Vectorizing your palate...")`
+  - Call `POST /recommend`, save response, flip to `result`
+- [ ] **Screen 4 — Result** (`app_stage == "result"`)
+  - [ ] Dish image + Thai name + English name + explanation
+  - [ ] Vendor name + distance + `st.link_button("📍 Take me there", maps_url)`
+  - [ ] Thai ordering flashcard (Thai script + phonetic)
+  - [ ] "Try again" button → reset session state
+- [ ] [components/](frontend/components/) — extract repeated UI blocks (food card, flashcard) once they appear twice
+
+**Definition of done:** end-to-end flow works in browser against the running backend.
+
+---
+
+## Shared / Glue
+
+- [ ] Each dev: `cp .env.example .env` in their folder, fill in real values
+- [ ] Backend dev creates `GEMINI_API_KEY` (Google AI Studio) and shares securely
+- [ ] First green run: backend on `:8000`, frontend on `:8501`, full demo flow works
+- [ ] Final: commit `uv.lock` files from both `backend/` and `frontend/`
+
+## Demo Day Checklist
+
+- [ ] Phone hotspot ready in case venue Wi-Fi blocks Gemini
+- [ ] Verified fallback explanation path (kill Wi-Fi, swipe, see fallback text)
+- [ ] All Google Maps links open correctly on a phone
+- [ ] One dry-run of the full demo script (README §"Demo Script")
+
+---
+
+## Branching
+
+```bash
+# create a branch per track
+git checkout -b track-a-data
+git checkout -b track-b-ml
+git checkout -b track-c-ui
+```
+
+Open PRs back into `main`. Quick reviews — no nitpicks under hackathon time pressure.
