@@ -54,20 +54,26 @@ services:
       - "11434:11434"
     volumes:
       - ./models:/root/.ollama
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
 
   ollama-init:
     image: ollama/ollama:latest
     container_name: thai-taste-ollama-init
     depends_on:
-      - ollama
+      ollama:
+        condition: service_healthy
     entrypoint:
       - /bin/sh
       - -c
       - |
-        sleep 3
         export OLLAMA_HOST=http://ollama:11434
-        echo "[ollama-init] pulling gemma4 (this may take a while on first run)..."
-        ollama pull gemma4
+        echo "[ollama-init] pulling gemma4:e4b (this may take a while on first run)..."
+        ollama pull gemma4:e4b
         echo "[ollama-init] done."
     restart: "no"
 

@@ -31,29 +31,31 @@ Hackathon timeline: **< 14 hours**. Three parallel tracks. Each owner ticks boxe
 **Owner:** _________  
 **Files:** [backend/app/services/](backend/app/services/), [backend/app/api/](backend/app/api/), [backend/app/config.py](backend/app/config.py), [backend/app/main.py](backend/app/main.py)
 
-- [ ] [config.py](backend/app/config.py) — load `GEMINI_API_KEY`, `DATA_DIR`, `CORS_ORIGINS` via `pydantic-settings`
-- [ ] [services/recommender.py](backend/app/services/recommender.py)
-  - [ ] Load `SentenceTransformer('all-MiniLM-L6-v2')` once (module-level / lru_cache)
-  - [ ] Pre-compute Thai dish embedding matrix on startup
-  - [ ] `def recommend(liked_food_ids: list[str]) -> tuple[dish, vendor]`
+- [x] [config.py](backend/app/config.py) — load `OLLAMA_URL`, `OLLAMA_MODEL`, `DATA_DIR`, `CORS_ORIGINS`, `MONGO_URL` via `pydantic-settings` *(switched from Gemini to local Ollama/gemma4:e4b)*
+- [x] [services/recommender.py](backend/app/services/recommender.py)
+  - [x] Load `SentenceTransformer('Qwen/Qwen3-Embedding-4B')` once via `lru_cache`
+  - [x] Pre-compute Thai dish embedding matrix on startup, cached in MongoDB `dish_embeddings` collection
+  - [x] `def recommend(liked_food_ids: list[str]) -> tuple[dish, vendor]`
     - Embed liked global foods → average → user fingerprint
     - Cosine similarity vs Thai matrix → argmax
     - Look up vendor by `dish_id`
-- [ ] [services/llm.py](backend/app/services/llm.py)
-  - [ ] `def get_match_explanation(liked_names, dish_name, fallback_keywords) -> str`
-  - [ ] Wrap Gemini call in `try/except` → return fallback string on any failure
-  - [ ] Use prompt from README ("We matched you with this because...")
-- [ ] [models/schemas.py](backend/app/models/schemas.py) — Pydantic request/response models
+- [x] [services/llm.py](backend/app/services/llm.py)
+  - [x] `def get_match_explanation(liked_names, dish_name, fallback_keywords) -> str`
+  - [x] Wraps Ollama call in `try/except` → returns keyword fallback string on any failure
+  - [x] Uses prompt ("We matched you with this because...") via local `ollama.Client`
+- [x] [models/schemas.py](backend/app/models/schemas.py) — Pydantic request/response models
   - `RecommendRequest { liked_food_ids: list[str] }`
   - `RecommendResponse { dish, vendor, explanation }`
-- [ ] [api/routes.py](backend/app/api/routes.py)
-  - [ ] `GET /health`
-  - [ ] `GET /global-foods` — returns the swipe deck for the frontend
-  - [ ] `POST /recommend` — runs recommender + LLM, returns full result
-- [ ] [main.py](backend/app/main.py) — FastAPI app, CORS middleware, mount routes
-- [ ] Smoke test: `uv run uvicorn app.main:app --reload` then `curl localhost:8000/health`
+- [x] [api/routes.py](backend/app/api/routes.py)
+  - [x] `GET /health`
+  - [x] `GET /global-foods` — returns the swipe deck for the frontend
+  - [x] `POST /recommend` — runs recommender + LLM, returns full result
+- [x] [main.py](backend/app/main.py) — FastAPI app, CORS middleware, mount routes
+- [x] Docker Compose — Mongo + Ollama services with healthchecks; `ollama-init` pulls `gemma4:e4b`
+- [x] E2E tests — 18 tests in [tests/test_journey.py](backend/tests/test_journey.py), all passing (27s)
+  - Verified: embedding cache (Mongo), semantic correctness, Ollama explanation, error handling
 
-**Definition of done:** `POST /recommend` returns a valid result with both Gemini and offline-fallback paths verified.
+**Definition of done:** `POST /recommend` returns a valid result with both Ollama and offline-fallback paths verified. ✅
 
 ---
 
@@ -90,7 +92,7 @@ Hackathon timeline: **< 14 hours**. Three parallel tracks. Each owner ticks boxe
 ## Shared / Glue
 
 - [ ] Each dev: `cp .env.example .env` in their folder, fill in real values
-- [ ] Backend dev creates `GEMINI_API_KEY` (Google AI Studio) and shares securely
+- [x] LLM runs locally via Ollama — no API key needed (`gemma4:e4b` pulled via Docker)
 - [ ] First green run: backend on `:8000`, frontend on `:8501`, full demo flow works
 - [ ] Final: commit `uv.lock` files from both `backend/` and `frontend/`
 
