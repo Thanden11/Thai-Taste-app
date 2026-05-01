@@ -84,7 +84,7 @@ def render_welcome() -> None:
             "https://images.unsplash.com/photo-1504674900247-0877df9cc836"
             "?auto=format&fit=crop&w=800&q=80",
             caption="Thai street food awaits",
-            use_container_width=True,
+            width="stretch",
         )
 
 
@@ -242,7 +242,7 @@ def render_results() -> None:
             img_col, info_col = st.columns([1, 1], gap="large")
 
             with img_col:
-                st.image(dish_image_url(dish["image_url"]), use_container_width=True)
+                st.image(dish_image_url(dish["image_url"]), width="stretch")
 
             with info_col:
                 st.markdown(rank_badge_html(rank), unsafe_allow_html=True)
