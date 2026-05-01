@@ -7,7 +7,7 @@ services:
     environment:
       - APP_ENV=development
       - LOG_LEVEL=INFO
-      - CORS_ORIGINS=http://localhost:8501
+      - CORS_ORIGINS=http://localhost:8501,http://localhost:8081,http://localhost:19006
       - MONGO_URL=mongodb://mongo:27017
       - OLLAMA_URL=http://ollama:11434
       - GEMINI_API_KEY=${GEMINI_API_KEY:-}

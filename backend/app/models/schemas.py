@@ -25,7 +25,16 @@ class RecommendRequest(BaseModel):
     liked_food_ids: list[str]
 
 
-class RecommendResponse(BaseModel):
+class RecommendResult(BaseModel):
     dish: DishOut
     vendor: VendorOut
     explanation: str
+
+
+class RecommendResponse(BaseModel):
+    results: list[RecommendResult]
+
+
+class NextCardRequest(BaseModel):
+    liked_ids: list[str]
+    seen_ids: list[str]

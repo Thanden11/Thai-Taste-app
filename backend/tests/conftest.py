@@ -27,3 +27,9 @@ def mac_response(api):
 def bbq_response(api):
     """Single warm /recommend call for BBQ Brisket — shared across all tests that need it."""
     return api.post("/recommend", json={"liked_food_ids": ["g_01"]}).json()
+
+
+@pytest.fixture(scope="session")
+def mac_top(mac_response):
+    """Shortcut to the rank-1 result from the Mac and Cheese recommendation."""
+    return mac_response["results"][0]

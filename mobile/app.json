@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "Thai Taste",
+    "slug": "thai-taste",
+    "scheme": "thaitaste",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "platforms": ["ios", "android", "web"],
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
