@@ -1,6 +1,7 @@
 import { router } from 'expo-router';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
+  Animated,
   Dimensions,
   FlatList,
   StyleSheet,
@@ -17,9 +18,20 @@ import { store } from '../utils/store';
 
 const { width: W } = Dimensions.get('window');
 
+const MATCH_LABELS = ['Perfect Match', '2nd Pick', '3rd Pick', '4th Pick', '5th Pick'];
+
 export default function ResultsScreen() {
   const results: RecommendResult[] = store.getResults();
   const [activeIndex, setActiveIndex] = useState(0);
+  const headerFade = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(headerFade, {
+      toValue: 1,
+      duration: 600,
+      useNativeDriver: true,
+    }).start();
+  }, [headerFade]);
 
   const onViewableItemsChanged = useRef(
     ({ viewableItems }: { viewableItems: ViewToken[] }) => {
@@ -29,7 +41,9 @@ export default function ResultsScreen() {
     },
   ).current;
 
-  const viewabilityConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
+  const viewabilityConfig = useRef({
+    viewAreaCoveragePercentThreshold: 50,
+  }).current;
 
   const handleTryAgain = () => {
     store.reset();
@@ -40,9 +54,13 @@ export default function ResultsScreen() {
     return (
       <SafeAreaView style={styles.safe}>
         <View style={styles.center}>
-          <Text style={styles.errorText}>No results found. Try again.</Text>
-          <TouchableOpacity style={styles.tryAgainBtn} onPress={handleTryAgain}>
-            <Text style={styles.tryAgainText}>Try Again</Text>
+          <Text style={styles.emptyEmoji}>🤔</Text>
+          <Text style={styles.emptyTitle}>No matches found</Text>
+          <Text style={styles.emptyText}>
+            Try liking more dishes next time!
+          </Text>
+          <TouchableOpacity style={styles.retryBtn} onPress={handleTryAgain}>
+            <Text style={styles.retryText}>Try Again</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -52,19 +70,55 @@ export default function ResultsScreen() {
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
       {/* Header */}
-      <View style={styles.header}>
-        <Text style={styles.headerLabel}>Your Thai Matches</Text>
-        <Text style={styles.headerSub}>Swipe to browse your top {results.length} picks</Text>
+      <Animated.View style={[styles.header, { opacity: headerFade }]}>
+        <Text style={styles.headerEmoji}>🎉</Text>
+        <View>
+          <Text style={styles.headerLabel}>Your Thai Matches</Text>
+          <Text style={styles.headerSub}>
+            Top {results.length} dishes for your taste
+          </Text>
+        </View>
+      </Animated.View>
+
+      {/* Page indicator */}
+      <View style={styles.indicators}>
+        {results.map((_, i) => (
+          <View key={i} style={styles.indicatorItem}>
+            <View
+              style={[
+                styles.dot,
+                i === activeIndex && styles.dotActive,
+              ]}
+            />
+            <Text
+              style={[
+                styles.indicatorLabel,
+                i === activeIndex && styles.indicatorLabelActive,
+              ]}
+            >
+              {i === 0 ? '★' : `#${i + 1}`}
+            </Text>
+          </View>
+        ))}
       </View>
 
-      {/* Page dots */}
-      <View style={styles.dots}>
-        {results.map((_, i) => (
-          <View
-            key={i}
-            style={[styles.dot, i === activeIndex && styles.dotActive]}
-          />
-        ))}
+      {/* Match label */}
+      <View style={styles.matchLabelRow}>
+        <View
+          style={[
+            styles.matchLabelBadge,
+            activeIndex === 0 && styles.matchLabelBadgeBest,
+          ]}
+        >
+          <Text
+            style={[
+              styles.matchLabelText,
+              activeIndex === 0 && styles.matchLabelTextBest,
+            ]}
+          >
+            {MATCH_LABELS[activeIndex] ?? `#${activeIndex + 1}`}
+          </Text>
+        </View>
       </View>
 
       {/* Horizontal dish pager */}
@@ -89,8 +143,8 @@ export default function ResultsScreen() {
 
       {/* Fixed bottom bar */}
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.tryAgainBtn} onPress={handleTryAgain}>
-          <Text style={styles.tryAgainText}>↩  Try Again</Text>
+        <TouchableOpacity style={styles.retryBtn} onPress={handleTryAgain}>
+          <Text style={styles.retryText}>↩ Start Over</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -103,35 +157,76 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bg,
   },
   header: {
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: spacing.md,
     paddingTop: spacing.sm,
     paddingBottom: spacing.xs,
+    gap: spacing.sm,
+  },
+  headerEmoji: {
+    fontSize: 28,
   },
   headerLabel: {
     fontSize: 22,
-    fontWeight: '800',
+    fontWeight: '900',
     color: colors.primary,
+    letterSpacing: -0.5,
   },
   headerSub: {
     fontSize: 13,
     color: colors.textSecondary,
-    marginTop: 2,
+    marginTop: 1,
   },
-  dots: {
+  indicators: {
     flexDirection: 'row',
     justifyContent: 'center',
-    gap: spacing.xs,
-    paddingVertical: spacing.sm,
+    gap: spacing.md,
+    paddingVertical: spacing.xs,
+  },
+  indicatorItem: {
+    alignItems: 'center',
+    gap: 3,
   },
   dot: {
-    width: 7,
-    height: 7,
+    width: 8,
+    height: 8,
     borderRadius: radius.full,
     backgroundColor: colors.border,
   },
   dotActive: {
     backgroundColor: colors.primary,
-    width: 20,
+    width: 22,
+  },
+  indicatorLabel: {
+    fontSize: 10,
+    color: colors.textMuted,
+    fontWeight: '600',
+  },
+  indicatorLabelActive: {
+    color: colors.primary,
+    fontWeight: '800',
+  },
+  matchLabelRow: {
+    alignItems: 'center',
+    paddingBottom: spacing.xs,
+  },
+  matchLabelBadge: {
+    backgroundColor: colors.primaryBg,
+    borderRadius: radius.full,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.xs,
+  },
+  matchLabelBadgeBest: {
+    backgroundColor: colors.primary,
+  },
+  matchLabelText: {
+    fontSize: 13,
+    fontWeight: '700',
+    color: colors.primary,
+  },
+  matchLabelTextBest: {
+    color: '#fff',
   },
   list: {
     flex: 1,
@@ -143,14 +238,14 @@ const styles = StyleSheet.create({
     borderTopColor: colors.border,
     backgroundColor: colors.bg,
   },
-  tryAgainBtn: {
-    borderWidth: 1.5,
+  retryBtn: {
+    borderWidth: 2,
     borderColor: colors.primary,
     borderRadius: radius.full,
-    paddingVertical: spacing.sm + 2,
+    paddingVertical: spacing.sm + 4,
     alignItems: 'center',
   },
-  tryAgainText: {
+  retryText: {
     color: colors.primary,
     fontWeight: '700',
     fontSize: 16,
@@ -159,11 +254,18 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: spacing.md,
+    gap: spacing.sm,
     paddingHorizontal: spacing.xl,
   },
-  errorText: {
+  emptyEmoji: { fontSize: 56 },
+  emptyTitle: {
+    fontSize: 22,
+    fontWeight: '800',
+    color: colors.text,
+  },
+  emptyText: {
     color: colors.textSecondary,
-    fontSize: 16,
+    fontSize: 15,
+    textAlign: 'center',
   },
 });

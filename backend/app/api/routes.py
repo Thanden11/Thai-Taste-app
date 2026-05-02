@@ -18,6 +18,11 @@ from app.services.llm import get_match_explanation
 
 router = APIRouter()
 
+# Load once at startup — avoids a disk read on every /recommend request.
+_global_foods: list[dict] = json.loads(
+    (Path(settings.data_dir) / "global_foods.json").read_text()
+)
+
 
 @router.get("/health")
 async def health():
@@ -26,9 +31,7 @@ async def health():
 
 @router.get("/ready")
 async def ready():
-    """Returns 200 when the embedding model is loaded and caches are built.
-    Returns 503 while warmup is still running.
-    """
+    """Returns 200 when the embedding model is loaded and caches are built."""
     if not recommender.is_ready():
         raise HTTPException(status_code=503, detail="warming_up")
     return {"status": "ready"}
@@ -36,8 +39,7 @@ async def ready():
 
 @router.get("/global-foods")
 async def global_foods():
-    path = Path(settings.data_dir) / "global_foods.json"
-    return json.loads(path.read_text())
+    return _global_foods
 
 
 @router.post("/recommend", response_model=RecommendResponse)
@@ -51,15 +53,13 @@ async def recommend_dish(body: RecommendRequest):
         dietary_restrictions=body.dietary_restrictions,
     )
 
-    global_foods = json.loads((Path(settings.data_dir) / "global_foods.json").read_text())
-    liked_names = [f["name"] for f in global_foods if f["id"] in body.liked_food_ids]
+    liked_names = [f["name"] for f in _global_foods if f["id"] in body.liked_food_ids]
 
     results = []
     for rank, (dish, vendor) in enumerate(matches):
-        # Full LLM explanation for rank-1 only; use keyword fallback for the rest
-        # to keep response time acceptable with a local Ollama model.
         if rank == 0:
-            explanation = get_match_explanation(
+            # Properly awaited async Ollama call — runs on GPU, non-blocking
+            explanation = await get_match_explanation(
                 liked_names=liked_names,
                 dish_name=dish["english_name"],
                 fallback_keywords=dish["match_reason_keywords"].split(", "),
@@ -70,7 +70,7 @@ async def recommend_dish(body: RecommendRequest):
 
         results.append(
             RecommendResult(
-                dish=DishOut(**{k: dish[k] for k in DishOut.model_fields}),
+                dish=DishOut(**{k: dish[k] for k in DishOut.model_fields if k in dish}),
                 vendor=VendorOut(**{k: vendor[k] for k in VendorOut.model_fields}),
                 explanation=explanation,
             )

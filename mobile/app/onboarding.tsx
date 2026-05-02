@@ -18,18 +18,20 @@ import { store } from '../utils/store';
 export default function OnboardingScreen() {
   const [country, setCountry] = useState<string | null>(null);
   const [pickerOpen, setPickerOpen] = useState(false);
-  const [noPork, setNoPork] = useState(false);
+  const [halal, setHalal] = useState(false);
+  const [vegan, setVegan] = useState(false);
 
   const handleCountrySelect = (c: string) => {
     setCountry(c);
     const auto = restrictionsForCountry(c);
-    setNoPork(auto.includes('no_pork'));
+    setHalal(auto.includes('no_pork'));
     setPickerOpen(false);
   };
 
   const handleStart = () => {
     const restrictions: string[] = [];
-    if (noPork) restrictions.push('no_pork');
+    if (halal) restrictions.push('no_pork');
+    if (vegan) restrictions.push('vegan');
     store.setDietaryRestrictions(restrictions);
     router.replace('/swipe');
   };
@@ -64,29 +66,51 @@ export default function OnboardingScreen() {
         {country && restrictionsForCountry(country).includes('no_pork') && (
           <View style={styles.infoBadge}>
             <Text style={styles.infoBadgeText}>
-              🚫  Pork dishes will be excluded from your recommendations.
+              ☪️  Halal mode detected — pork dishes will be excluded.
             </Text>
           </View>
         )}
 
-        {/* Manual overrides */}
+        {/* Dietary preferences */}
         <Text style={[styles.label, { marginTop: spacing.lg }]}>
           Dietary preferences
         </Text>
 
         <View style={styles.toggleRow}>
-          <Text style={styles.toggleLabel}>Exclude pork dishes</Text>
+          <View style={styles.toggleLabelGroup}>
+            <Text style={styles.toggleEmoji}>☪️</Text>
+            <View>
+              <Text style={styles.toggleLabel}>Halal friendly</Text>
+              <Text style={styles.toggleSub}>No pork or lard</Text>
+            </View>
+          </View>
           <Switch
-            value={noPork}
-            onValueChange={setNoPork}
+            value={halal}
+            onValueChange={setHalal}
             trackColor={{ true: colors.primary }}
+            thumbColor="#fff"
+          />
+        </View>
+
+        <View style={styles.toggleRow}>
+          <View style={styles.toggleLabelGroup}>
+            <Text style={styles.toggleEmoji}>🌱</Text>
+            <View>
+              <Text style={styles.toggleLabel}>Vegan</Text>
+              <Text style={styles.toggleSub}>No meat, seafood, dairy or eggs</Text>
+            </View>
+          </View>
+          <Switch
+            value={vegan}
+            onValueChange={setVegan}
+            trackColor={{ true: '#2A9D5C' }}
             thumbColor="#fff"
           />
         </View>
 
         {/* Active filter summary */}
         <Text style={styles.summary}>
-          {noPork ? 'Active: No pork' : 'No dietary filters applied'}
+          {[halal && 'Halal', vegan && 'Vegan'].filter(Boolean).join(' · ') || 'No dietary filters applied'}
         </Text>
 
         {/* CTA */}
@@ -191,8 +215,17 @@ const styles = StyleSheet.create({
     borderRadius: radius.md,
     padding: spacing.md,
     marginBottom: spacing.sm,
+    gap: spacing.sm,
   },
-  toggleLabel: { flex: 1, fontSize: 15, color: colors.text },
+  toggleLabelGroup: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+  },
+  toggleEmoji: { fontSize: 22 },
+  toggleLabel: { fontSize: 15, color: colors.text, fontWeight: '600' },
+  toggleSub: { fontSize: 12, color: colors.textSecondary, marginTop: 1 },
   summary: {
     fontSize: 13,
     color: colors.textMuted,

@@ -1,8 +1,4 @@
-"""UI helpers for Thai Taste — CSS injection and HTML fragment builders.
-
-All functions either inject CSS into the page or return raw HTML strings.
-Interactive widgets (buttons, columns, tabs) live in app.py.
-"""
+"""UI helpers for Thai Taste — CSS injection and HTML fragment builders."""
 import streamlit as st
 
 # ── Global CSS ────────────────────────────────────────────────────────────────
@@ -20,6 +16,7 @@ GLOBAL_CSS = """
     color: #E85D04;
     line-height: 1.1;
     margin-bottom: 0.25rem;
+    letter-spacing: -1px;
 }
 .hero-sub {
     font-size: 1.2rem;
@@ -39,16 +36,18 @@ GLOBAL_CSS = """
 .swipe-card {
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 6px 28px rgba(0,0,0,0.13);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.14);
     background: #fff;
     margin-bottom: 1rem;
-    max-width: 480px;
+    max-width: 460px;
     margin-left: auto;
     margin-right: auto;
+    transition: transform 0.15s ease;
 }
+.swipe-card:hover { transform: translateY(-3px); }
 .swipe-card img {
     width: 100%;
-    height: 300px;
+    height: 280px;
     object-fit: cover;
     display: block;
 }
@@ -59,7 +58,14 @@ GLOBAL_CSS = """
     font-size: 1.35rem;
     font-weight: 700;
     color: #1A1A1A;
+    margin: 0 0 4px;
+}
+.swipe-card-sensory {
+    font-size: 0.82rem;
+    color: #888;
     margin: 0;
+    font-style: italic;
+    line-height: 1.4;
 }
 
 /* ---- progress hint ---- */
@@ -78,7 +84,7 @@ GLOBAL_CSS = """
     margin-bottom: 0.5rem;
 }
 
-/* ---- all-done state ---- */
+/* ---- done state ---- */
 .done-box {
     text-align: center;
     padding: 2rem;
@@ -86,15 +92,8 @@ GLOBAL_CSS = """
     border-radius: 16px;
     margin: 1rem 0;
 }
-.done-emoji {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-}
-.done-title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #1A1A1A;
-}
+.done-emoji { font-size: 3rem; margin-bottom: 0.5rem; }
+.done-title { font-size: 1.3rem; font-weight: 700; color: #1A1A1A; }
 
 /* ---- results ---- */
 .section-eyebrow {
@@ -110,6 +109,7 @@ GLOBAL_CSS = """
     font-weight: 800;
     color: #E85D04;
     line-height: 1.15;
+    letter-spacing: -0.5px;
 }
 .dish-thai {
     font-size: 1.1rem;
@@ -127,6 +127,14 @@ GLOBAL_CSS = """
     font-size: 0.97rem;
     line-height: 1.6;
 }
+.explanation-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #E85D04;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.35rem;
+}
 .rank-badge {
     display: inline-block;
     background: #E85D04;
@@ -138,11 +146,40 @@ GLOBAL_CSS = """
     padding: 3px 12px;
     margin-bottom: 0.5rem;
 }
+.spice-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0.4rem 0 0.75rem;
+    font-size: 0.85rem;
+    color: #666;
+}
+.tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0.5rem 0 0.75rem;
+}
+.tag-pill {
+    background: #F5F5F5;
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 0.78rem;
+    color: #555;
+    font-weight: 500;
+}
 .vendor-card {
     background: #F5F5F5;
     border-radius: 12px;
     padding: 0.9rem 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
+.vendor-icon {
+    font-size: 1.4rem;
+}
+.vendor-info { flex: 1; }
 .vendor-name {
     font-size: 1.05rem;
     font-weight: 700;
@@ -159,6 +196,7 @@ GLOBAL_CSS = """
     padding: 1.25rem 1.5rem;
     color: white;
     text-align: center;
+    box-shadow: 0 4px 16px rgba(232,93,4,0.3);
 }
 .flashcard-label {
     font-size: 0.75rem;
@@ -177,6 +215,13 @@ GLOBAL_CSS = """
     opacity: 0.9;
     font-style: italic;
 }
+.flashcard-hint {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: 0.5rem;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    padding-top: 0.5rem;
+}
 </style>
 """
 
@@ -190,39 +235,69 @@ def inject_css() -> None:
 def swipe_card_html(card: dict) -> str:
     img = card.get("remote_image_url") or card.get("image_url", "")
     name = card["name"]
+    sensory = card.get("sensory_string", "")
+    preview = (sensory[:72] + "…") if len(sensory) > 72 else sensory
     return (
         f'<div class="swipe-card">'
         f'<img src="{img}" alt="{name}" />'
         f'<div class="swipe-card-footer">'
         f'<p class="swipe-card-name">{name}</p>'
+        f'<p class="swipe-card-sensory">{preview}</p>'
         f'</div></div>'
     )
 
 
+def spice_html(level: int) -> str:
+    chilis = "🌶️" * level + "⬜" * (5 - level)
+    labels = ["None", "Very Mild", "Mild", "Medium", "Hot", "Very Hot"]
+    label = labels[min(level, 5)]
+    return (
+        f'<div class="spice-row">'
+        f'<span>{chilis}</span>'
+        f'<span>{label}</span>'
+        f'</div>'
+    )
+
+
+def tags_html(tags: list) -> str:
+    if not tags:
+        return ""
+    pills = "".join(f'<span class="tag-pill">{t}</span>' for t in tags)
+    return f'<div class="tags-row">{pills}</div>'
+
+
 def explanation_html(text: str) -> str:
-    return f'<div class="explanation-box">"{text}"</div>'
+    return (
+        f'<div class="explanation-box">'
+        f'<div class="explanation-label">Why this matches you</div>'
+        f'"{text}"'
+        f'</div>'
+    )
 
 
 def rank_badge_html(rank: int) -> str:
-    label = "Best Match" if rank == 0 else f"Match #{rank + 1}"
+    label = "★ Best Match" if rank == 0 else f"Match #{rank + 1}"
     return f'<span class="rank-badge">{label}</span>'
 
 
 def vendor_html(vendor: dict) -> str:
     return (
         f'<div class="vendor-card">'
+        f'<div class="vendor-icon">📍</div>'
+        f'<div class="vendor-info">'
         f'<div class="vendor-name">{vendor["vendor_name"]}</div>'
         f'<div class="vendor-distance">{vendor["distance"]} away</div>'
-        f'</div>'
+        f'</div></div>'
     )
 
 
 def flashcard_html(vendor: dict) -> str:
     return (
         f'<div class="flashcard">'
-        f'<div class="flashcard-label">Say it in Thai</div>'
+        f'<div class="flashcard-label">🇹🇭 Say it in Thai</div>'
         f'<div class="flashcard-thai">{vendor["flashcard_thai"]}</div>'
         f'<div class="flashcard-phonetic">{vendor["flashcard_phonetic"]}</div>'
+        f'<div class="flashcard-hint">Show this to the vendor when ordering!</div>'
         f'</div>'
     )
 
