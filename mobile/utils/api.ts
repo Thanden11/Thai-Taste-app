@@ -39,6 +39,14 @@ export function dishImageUrl(path: string): string {
   return `${BACKEND_URL}${path}`;
 }
 
+/** Fetch all global foods in one batch for card stacking */
+export async function fetchAllGlobalFoods(): Promise<GlobalFood[]> {
+  const res = await fetch(`${BACKEND_URL}/global-foods`);
+  if (!res.ok) throw new Error(`global-foods failed: ${res.status}`);
+  const data = await res.json();
+  return data.foods ?? data;
+}
+
 export async function fetchNextCard(
   likedIds: string[],
   seenIds: string[],
