@@ -4,7 +4,7 @@ import ollama
 from app.config import settings
 
 
-def get_match_explanation(
+async def get_match_explanation(
     liked_names: list[str],
     dish_name: str,
     fallback_keywords: list[str],
@@ -16,8 +16,13 @@ def get_match_explanation(
         "Be warm, specific, and avoid mentioning country names."
     )
     try:
-        client = ollama.Client(host=settings.ollama_url)
-        response = client.generate(model=settings.ollama_model, prompt=prompt)
+        client = ollama.AsyncClient(host=settings.ollama_url)
+        response = await client.generate(
+            model=settings.ollama_model,
+            prompt=prompt,
+            keep_alive=-1,   # keep model pinned in GPU VRAM between calls
+        )
         return response.response.strip()
-    except Exception:
+    except Exception as e:
+        print(f"[llm] Ollama error: {e}")
         return f"You'll love this — it's {', '.join(fallback_keywords)}."

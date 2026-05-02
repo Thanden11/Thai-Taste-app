@@ -8,6 +8,8 @@ from components import (
     swipe_card_html,
     explanation_html,
     rank_badge_html,
+    spice_html,
+    tags_html,
     vendor_html,
     flashcard_html,
     done_box_html,
@@ -373,6 +375,8 @@ def render_results() -> None:
                     f'<div class="dish-thai">{dish["thai_name"]} &middot; {dish["name"]}</div>',
                     unsafe_allow_html=True,
                 )
+                st.markdown(spice_html(dish.get("spice_level", 0)), unsafe_allow_html=True)
+                st.markdown(tags_html(dish.get("tags", [])), unsafe_allow_html=True)
                 st.write(dish["description"])
                 st.markdown(explanation_html(explanation), unsafe_allow_html=True)
 

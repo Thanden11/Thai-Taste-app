@@ -10,6 +10,8 @@ class DishOut(BaseModel):
     description: str
     image_url: str
     sensory_string: str
+    spice_level: int = 0
+    tags: list[str] = []
 
 
 class VendorOut(BaseModel):
