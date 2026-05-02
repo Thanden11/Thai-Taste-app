@@ -154,28 +154,33 @@ def render_onboarding() -> None:
     if "no_pork" in auto_restrictions:
         st.markdown(
             '<div class="step-box" style="border-left-color:#E63946;">'
-            '🚫 &nbsp;<strong>Pork-free</strong> — pork dishes will be excluded from your recommendations.'
+            '☪️ &nbsp;<strong>Halal mode auto-detected</strong> — pork dishes will be excluded.'
             '</div>',
             unsafe_allow_html=True,
         )
 
     st.write("")
-    st.markdown("**Manual overrides** (optional)")
+    st.markdown("**Dietary preferences** (optional)")
 
-    no_pork = st.checkbox(
-        "Exclude pork dishes",
+    halal = st.checkbox(
+        "☪️  Halal friendly  (no pork, no lard)",
         value="no_pork" in auto_restrictions,
-        help="Includes dishes with pork, moo, pepperoni, bacon etc.",
+    )
+    vegan = st.checkbox(
+        "🌱  Vegan  (no meat, seafood, dairy or eggs)",
+        value=False,
     )
 
     # Build final restriction list
     restrictions: list[str] = []
-    if no_pork:
+    if halal:
         restrictions.append("no_pork")
+    if vegan:
+        restrictions.append("vegan")
 
     # Summary
+    labels = {"no_pork": "Halal", "vegan": "Vegan"}
     if restrictions:
-        labels = {"no_pork": "No pork"}
         badges = " · ".join(labels[r] for r in restrictions if r in labels)
         st.caption(f"Active filters: {badges}")
     else:
@@ -258,7 +263,7 @@ def render_swipe() -> None:
     # Dietary filter badge
     if st.session_state.dietary_restrictions:
         label = " · ".join(
-            {"no_pork": "🚫 No pork"}.get(r, r)
+            {"no_pork": "☪️ Halal", "vegan": "🌱 Vegan"}.get(r, r)
             for r in st.session_state.dietary_restrictions
         )
         st.caption(f"Active filter: {label}")

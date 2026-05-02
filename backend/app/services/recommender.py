@@ -106,23 +106,40 @@ def is_ready() -> bool:
 
 # ── Dietary filtering ─────────────────────────────────────────────────────────
 
-# Word-boundary regex for pork indicators.
-# Matches "pork", "moo" (Thai for pork), "pepperoni", "bacon" as whole words.
-_PORK_RE = re.compile(r"\b(pork|moo|pepperoni|bacon)\b", re.IGNORECASE)
+_PORK_RE = re.compile(
+    r"\b(pork|moo|pepperoni|bacon|ham|lard)\b", re.IGNORECASE
+)
+
+# Catches meat, seafood, dairy and egg indicators for vegan filtering.
+_NON_VEGAN_RE = re.compile(
+    r"\b(pork|moo|chicken|gai|beef|nuea|shrimp|goong|prawn|fish|pla|"
+    r"seafood|talay|crab|oyster|clam|hoy|duck|lamb|meat|bacon|ham|"
+    r"egg|milk|cream|butter|cheese|dairy|lard|pepperoni)\b",
+    re.IGNORECASE,
+)
 
 
-def _is_pork(item: dict) -> bool:
-    text = " ".join([
+def _item_text(item: dict) -> str:
+    return " ".join([
         item.get("english_name", item.get("name", "")),
         item.get("sensory_string", ""),
         " ".join(item.get("tags", [])),
     ])
-    return bool(_PORK_RE.search(text))
+
+
+def _is_pork(item: dict) -> bool:
+    return bool(_PORK_RE.search(_item_text(item)))
+
+
+def _is_non_vegan(item: dict) -> bool:
+    return bool(_NON_VEGAN_RE.search(_item_text(item)))
 
 
 def _apply_restrictions(items: list[dict], restrictions: list[str]) -> list[dict]:
     if "no_pork" in restrictions:
         items = [i for i in items if not _is_pork(i)]
+    if "vegan" in restrictions:
+        items = [i for i in items if not _is_non_vegan(i)]
     return items
 
 
