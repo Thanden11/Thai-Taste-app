@@ -20,12 +20,22 @@ _warmed_up = False
 
 @lru_cache(maxsize=1)
 def _model() -> SentenceTransformer:
-    log.info("Loading embedding model (this takes ~30 s on first run)…")
+    import torch
+    if torch.cuda.is_available():
+        device = "cuda"
+        extra = {"device_map": "auto", "attn_implementation": "sdpa"}
+        log.info("Loading embedding model on GPU…")
+    else:
+        device = "cpu"
+        extra = {}
+        log.warning("CUDA unavailable — loading embedding model on CPU (warmup will be slow).")
+
     model = SentenceTransformer(
         "Qwen/Qwen3-Embedding-4B",
-        model_kwargs={"device_map": "auto", "attn_implementation": "sdpa"},
+        model_kwargs=extra,
+        device=device,
     )
-    log.info("Embedding model loaded.")
+    log.info("Embedding model loaded on %s.", device.upper())
     return model
 
 
